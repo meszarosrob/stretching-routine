@@ -16,36 +16,35 @@
              x-show="state === states.SETTINGS">
         <div class="control">
             <label class="horizontal-stack">
-                <span>Length of exercise is</span>
+                <span>The length of an exercise is</span>
                 <input min="15"
                        max="60"
                        step="5"
                        type="number"
                        x-model.number="duration.exercise">
-                <span>seconds</span>
+                <span>seconds.</span>
             </label>
         </div>
 
         <div class="control">
             <label class="horizontal-stack">
-                <span>Keep</span>
+                <span>Pause</span>
                 <input type="number"
                        min="3"
                        max="10"
                        step="1"
                        x-model.number="duration.between">
-                <span>seconds pause between exercise</span>
+                <span>seconds between exercises.</span>
             </label>
         </div>
 
         <div class="control">
             <label class="horizontal-stack">
-                <span>Delay start by</span>
                 <input min="3"
                        step="1"
                        type="number"
                        x-model.number="duration.buffer">
-                <span>seconds</span>
+                <span>seconds are needed before the exercises.</span>
             </label>
         </div>
         <div class="control">
