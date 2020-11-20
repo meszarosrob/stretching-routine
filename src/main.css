@@ -25,6 +25,7 @@ body {
 }
 
 .universe > * {
+    width: 100%;
     max-width: 640px;
     margin-right: auto;
     margin-left: auto;
@@ -46,13 +47,13 @@ body {
     font-size: 3rem;
 }
 
-.vertical-stack > * + * {
-    margin-top: 1rem;
-}
-
-.horizontal-stack {
+[class*="horizontal"] {
     display: flex;
     align-items: center;
+}
+
+.vertical-stack > * + * {
+    margin-top: 1rem;
 }
 
 .horizontal-stack > * + * {
@@ -64,6 +65,5 @@ body {
 }
 
 .horizontal-center-elements {
-    display: flex;
     justify-content: center;
 }

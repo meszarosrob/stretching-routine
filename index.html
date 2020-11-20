@@ -14,7 +14,9 @@
 
     <section class="settings vertical-stack"
              x-show="state === states.SETTINGS">
+
         <div class="control">
+
             <label class="horizontal-stack">
                 <span>The length of an exercise is</span>
                 <input min="15"
@@ -24,9 +26,11 @@
                        x-model.number="duration.exercise">
                 <span>seconds.</span>
             </label>
+
         </div>
 
         <div class="control">
+
             <label class="horizontal-stack">
                 <span>Pause</span>
                 <input type="number"
@@ -36,9 +40,11 @@
                        x-model.number="duration.between">
                 <span>seconds between exercises.</span>
             </label>
+
         </div>
 
         <div class="control">
+
             <label class="horizontal-stack">
                 <input min="3"
                        step="1"
@@ -46,28 +52,39 @@
                        x-model.number="duration.buffer">
                 <span>seconds are needed before the exercises.</span>
             </label>
+
         </div>
+
         <div class="control">
-            <label class="horizontal-stack">
-                <span>Each exercise will start with</span>
-                <select x-model="soundEffect.start">
-                    <template x-for="effect in soundEffects">
-                        <option :key="effect.sound" :value="effect.sound" x-text="effect.name"></option>
-                    </template>
-                </select>
-                <span>sound</span>
-            </label>
-        </div>
-        <div class="control">
-            <label class="horizontal-stack">
-                <span>And finish with</span>
-                <select x-model="soundEffect.stop">
-                    <template x-for="effect in soundEffects">
-                        <option :key="effect.sound" :value="effect.sound" x-text="effect.name"></option>
-                    </template>
-                </select>
-                <span>sound</span>
-            </label>
+
+            <div class="horizontal-line">
+
+                <label class="horizontal-stack">
+                    <span>Play</span>
+                    <select x-model="soundEffect.start">
+                        <template x-for="effect in soundEffects">
+                            <option :key="effect.sound"
+                                    x-bind:value="effect.sound"
+                                    x-text="effect.name"></option>
+                        </template>
+                    </select>
+                    <span>when the exercise starts</span>
+                </label>
+
+                <label class="horizontal-stack">
+                    <span>, and</span>
+                    <select x-model="soundEffect.stop">
+                        <template x-for="effect in soundEffects">
+                            <option :key="effect.sound"
+                                    x-bind:value="effect.sound"
+                                    x-text="effect.name"></option>
+                        </template>
+                    </select>
+                    <span>when ends.</span>
+                </label>
+
+            </div>
+
         </div>
 
         <button type="button"
