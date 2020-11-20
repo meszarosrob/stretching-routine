@@ -8,24 +8,24 @@
         "src": "assets/soundEffects/sound-02.mp3"
     },
     {
-        "name": "Beep multiple 1",
+        "name": "Beep 1",
         "src": "assets/soundEffects/sound-03.mp3"
     },
     {
-        "name": "Beep multiple 2",
+        "name": "Beep 2",
         "src": "assets/soundEffects/sound-04.mp3"
     },
     {
-        "name": "Camera focus motor",
+        "name": "Camera focus",
         "src": "assets/soundEffects/sound-05.mp3"
     },
     {
-        "name": "Cartoon ding bell",
-        "src": "assets/soundEffects/sound-06.mp3"
+        "name": "Cartoon bell",
+        "sound": "assets/soundEffects/sound-06.mp3"
     },
     {
         "name": "Censor beep",
-        "src": "assets/soundEffects/sound-07.mp3"
+        "sound": "assets/soundEffects/sound-07.mp3"
     },
     {
         "name": "Doorbell",
