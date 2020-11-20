@@ -14,7 +14,6 @@
 
     <section class="settings vertical-stack"
              x-show="state === states.SETTINGS">
-
         <div class="control">
             <label class="horizontal-stack">
                 <span>Length of exercise is</span>
@@ -98,7 +97,7 @@
               key="state-started">
 
         <section class="exercise vertical-stack">
-
+            <audio autoplay x-bind:src="soundEffect.start"></audio>
             <div class="exercise__preview">
                 <video width="640"
                        height="480"
