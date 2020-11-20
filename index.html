@@ -49,6 +49,28 @@
                 <span>seconds</span>
             </label>
         </div>
+        <div class="control">
+            <label class="horizontal-stack">
+                <span>Each exercise will start with</span>
+                <select x-model="soundEffect.start">
+                    <template x-for="effect in soundEffects">
+                        <option :key="effect.sound" :value="effect.sound" x-text="effect.name"></option>
+                    </template>
+                </select>
+                <span>sound</span>
+            </label>
+        </div>
+        <div class="control">
+            <label class="horizontal-stack">
+                <span>And finish with</span>
+                <select x-model="soundEffect.stop">
+                    <template x-for="effect in soundEffects">
+                        <option :key="effect.sound" :value="effect.sound" x-text="effect.name"></option>
+                    </template>
+                </select>
+                <span>sound</span>
+            </label>
+        </div>
 
         <button type="button"
                 x-on:click.prevent="start()">

@@ -1,5 +1,6 @@
 import 'alpinejs';
 import exercises from './exercises.json';
+import sounds from './sounds.json';
 
 const STATES = {
     SETTINGS: 100,
@@ -24,6 +25,10 @@ const app = () => {
             buffer: 5,
             exercise: 15,
             between: 3
+        },
+        soundEffect: {
+            start: 'assets/soundEffects/ding.mp3',
+            stop: 'assets/soundEffects/ding2.mp3'
         },
         start () {
             this.step = 1;
@@ -67,6 +72,9 @@ const app = () => {
             const index = this.step - 1;
 
             return exercises[index];
+        },
+        get soundEffects () {
+            return sounds;
         }
     };
 };

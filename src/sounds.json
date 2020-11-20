@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Ding 1",
+        "sound": "assets/soundEffects/ding.mp3"
+    },
+    {
+        "name": "Ding 2",
+        "sound": "assets/soundEffects/ding2.mp3"
+    }
+]
