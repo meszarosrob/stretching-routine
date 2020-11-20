@@ -54,8 +54,8 @@
                 <span>Play</span>
                 <select x-model="soundEffect.start">
                     <template x-for="effect in soundEffects">
-                        <option :key="effect.sound"
-                                x-bind:value="effect.sound"
+                        <option :key="effect.src"
+                                x-bind:value="effect.src"
                                 x-text="effect.name"></option>
                     </template>
                 </select>
@@ -68,8 +68,8 @@
                 <span>When exercise ends, play</span>
                 <select x-model="soundEffect.stop">
                     <template x-for="effect in soundEffects">
-                        <option :key="effect.sound"
-                                x-bind:value="effect.sound"
+                        <option :key="effect.src"
+                                x-bind:value="effect.src"
                                 x-text="effect.name"></option>
                     </template>
                 </select>
@@ -109,7 +109,7 @@
                        autoplay
                        muted
                        loop
-                       x-bind:src="exercise.video"></video>
+                       x-bind:src="exercise.src"></video>
             </div>
 
             <div class="exercise__info text-center text-medium">

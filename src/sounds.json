@@ -1,50 +1,50 @@
 [
     {
         "name": "Ding",
-        "sound": "assets/soundEffects/sound-01.mp3"
+        "src": "assets/soundEffects/sound-01.mp3"
     },
     {
         "name": "Answer ding",
-        "sound": "assets/soundEffects/sound-02.mp3"
+        "src": "assets/soundEffects/sound-02.mp3"
     },
     {
         "name": "Beep multiple 1",
-        "sound": "assets/soundEffects/sound-03.mp3"
+        "src": "assets/soundEffects/sound-03.mp3"
     },
     {
         "name": "Beep multiple 2",
-        "sound": "assets/soundEffects/sound-04.mp3"
+        "src": "assets/soundEffects/sound-04.mp3"
     },
     {
         "name": "Camera focus motor",
-        "sound": "assets/soundEffects/sound-05.mp3"
+        "src": "assets/soundEffects/sound-05.mp3"
     },
     {
         "name": "Cartoon ding bell",
-        "sound": "assets/soundEffects/sound-06.mp3"
+        "src": "assets/soundEffects/sound-06.mp3"
     },
     {
         "name": "Censor beep",
-        "sound": "assets/soundEffects/sound-07.mp3"
+        "src": "assets/soundEffects/sound-07.mp3"
     },
     {
         "name": "Doorbell",
-        "sound": "assets/soundEffects/sound-08.mp3"
+        "src": "assets/soundEffects/sound-08.mp3"
     },
     {
         "name": "Eye wink",
-        "sound": "assets/soundEffects/sound-09.mp3"
+        "src": "assets/soundEffects/sound-09.mp3"
     },
     {
         "name": "Fax machine",
-        "sound": "assets/soundEffects/sound-10.mp3"
+        "src": "assets/soundEffects/sound-10.mp3"
     },
     {
         "name": "Hanging bell",
-        "sound": "assets/soundEffects/sound-11.mp3"
+        "src": "assets/soundEffects/sound-11.mp3"
     },
     {
         "name": "Teeth sparkle",
-        "sound": "assets/soundEffects/sound-12.mp3"
+        "src": "assets/soundEffects/sound-12.mp3"
     }
 ]
