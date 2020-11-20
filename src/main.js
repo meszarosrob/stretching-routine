@@ -27,8 +27,8 @@ const app = () => {
             between: 3
         },
         soundEffect: {
-            start: 'assets/soundEffects/ding.mp3',
-            stop: 'assets/soundEffects/ding2.mp3'
+            start: 'assets/soundEffects/sound-01.mp3',
+            stop: 'assets/soundEffects/sound-07.mp3'
         },
         start () {
             this.step = 1;
@@ -52,21 +52,21 @@ const app = () => {
         },
         oneTurn () {
             this.state = STATES.BETWEEN;
-
+            const startSound = new Audio(this.soundEffect.start);
+            const stopSound = new Audio(this.soundEffect.stop);
             timeline = setTimeout(() => {
                 this.state = STATES.STARTED;
-
+                startSound.play();
                 timeline = setTimeout(() => {
                     if (this.step === exercises.length) {
                         this.state = STATES.FINISHED;
                         return;
                     }
-
                     this.step = this.step + 1;
-
                     this.oneTurn();
                 }, secInMs(this.duration.exercise));
             }, secInMs(this.duration.between));
+            stopSound.play();
         },
         get exercise () {
             const index = this.step - 1;
