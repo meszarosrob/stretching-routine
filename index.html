@@ -58,8 +58,9 @@
         <div>&nbsp;</div>
 
         <div class="text-small">
-            Exercises from the <a href="https://www.thegreatcoursesplus.com/physiology-and-fitness">Physiology and
-            Fitness</a> course, episode 36.
+            Exercises from the
+            <a href="https://www.thegreatcoursesplus.com/physiology-and-fitness">Physiology and Fitness</a>
+            course, episode 36.
         </div>
 
     </section>
@@ -85,7 +86,7 @@
                        x-bind:src="exercise.video"></video>
             </div>
 
-            <div class="exercise__info text-center text-big">
+            <div class="exercise__info text-center text-medium">
                 <strong x-text="exercise.name"></strong>
             </div>
 
@@ -115,7 +116,10 @@
     <template x-if="state === states.BETWEEN"
               key="state-between">
         <section>
-            <div class="text-big">Next exercise: <strong x-text="exercise.name"></strong></div>
+            <div class="text-center">
+                <span class="text-medium">Next exercise:</span><br>
+                <strong class="text-big" x-text="exercise.name"></strong>
+            </div>
         </section>
     </template>
 
