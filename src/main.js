@@ -26,7 +26,7 @@ const app = () => {
             exercise: 15,
             between: 3
         },
-        soundEffect: {
+        sound: {
             start: 'assets/soundEffects/sound-01.mp3',
             stop: 'assets/soundEffects/sound-07.mp3'
         },
