@@ -1,0 +1,75 @@
+import 'alpinejs';
+import exercises from './exercises.json';
+
+const STATES = {
+    SETTINGS: 100,
+    BUFFER: 200,
+    STARTED: 300,
+    PAUSED: 400,
+    BETWEEN: 500,
+    FINISHED: 600,
+};
+
+let timeline = undefined;
+
+const secInMs = (time) => {
+    return time * 1000;
+};
+
+const app = () => {
+    return {
+        state: STATES.SETTINGS,
+        step: 1,
+        duration: {
+            buffer: 5,
+            exercise: 15,
+            between: 3,
+        },
+        start() {
+            this.step = 1;
+
+            this.buffer();
+        },
+        resume() {
+            this.buffer();
+        },
+        pause() {
+            clearTimeout(timeline);
+
+            this.state = STATES.PAUSED;
+        },
+        buffer() {
+            this.state = STATES.BUFFER;
+
+            setTimeout(() => {
+                this.oneTurn();
+            }, secInMs(this.duration.buffer));
+        },
+        oneTurn() {
+            this.state = STATES.BETWEEN;
+
+            timeline = setTimeout(() => {
+                this.state = STATES.STARTED;
+
+                timeline = setTimeout(() => {
+                    if (this.step === exercises.length) {
+                        this.state = STATES.FINISHED;
+                        return;
+                    }
+
+                    this.step = this.step + 1;
+
+                    this.oneTurn();
+                }, secInMs(this.duration.exercise));
+            }, secInMs(this.duration.between));
+        },
+        get exercise() {
+            const index = this.step - 1;
+
+            return exercises[index];
+        },
+    };
+};
+
+window.states = STATES;
+window.app = app;

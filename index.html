@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stretching Routine</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="src/main.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="universe"
+     x-data="app()">
+
+    <section class="settings vertical-stack"
+             x-show="state === states.SETTINGS">
+
+        <div class="control">
+            <label class="horizontal-stack">
+                <span>Length of exercise is</span>
+                <input min="15"
+                       max="60"
+                       step="5"
+                       type="number"
+                       x-model.number="duration.exercise">
+                <span>seconds</span>
+            </label>
+        </div>
+
+        <div class="control">
+            <label class="horizontal-stack">
+                <span>Keep</span>
+                <input type="number"
+                       min="3"
+                       max="10"
+                       step="1"
+                       x-model.number="duration.between">
+                <span>seconds pause between exercise</span>
+            </label>
+        </div>
+
+        <div class="control">
+            <label class="horizontal-stack">
+                <span>Delay start by</span>
+                <input min="3"
+                       step="1"
+                       type="number"
+                       x-model.number="duration.buffer">
+                <span>seconds</span>
+            </label>
+        </div>
+
+        <button type="button"
+                x-on:click.prevent="start()">
+            Start
+        </button>
+
+        <div>&nbsp;</div>
+
+        <div class="text-small">
+            Exercises from the <a href="https://www.thegreatcoursesplus.com/physiology-and-fitness">
+            Physiology and Fitness</a> course.
+        </div>
+
+    </section>
+
+    <template x-if="state === states.BUFFER"
+              key="state-buffer">
+        <section>
+            <div class="text-big">Get ready...</div>
+        </section>
+    </template>
+
+    <template x-if="state === states.STARTED"
+              key="state-started">
+
+        <section class="exercise vertical-stack">
+
+            <div class="exercise__preview">
+                <video width="640"
+                       height="480"
+                       autoplay
+                       muted
+                       loop
+                       x-bind:src="exercise.video"></video>
+            </div>
+
+            <div class="exercise__info text-center text-big">
+                <strong x-text="exercise.name"></strong>
+            </div>
+
+            <div class="exercise__action horizontal-center-elements">
+
+                <button type="button"
+                        x-on:click.prevent="pause()">
+                    Pause
+                </button>
+
+            </div>
+
+        </section>
+
+    </template>
+
+    <template x-if="state === states.PAUSED"
+              key="state-paused">
+        <section>
+            <button type="button"
+                    x-on:click.prevent="resume()">
+                Resume
+            </button>
+        </section>
+    </template>
+
+    <template x-if="state === states.BETWEEN"
+              key="state-between">
+        <section>
+            <div class="text-big">Next exercise: <strong x-text="exercise.name"></strong></div>
+        </section>
+    </template>
+
+    <template x-if="state === states.FINISHED"
+              key="state-finished">
+        <section>
+            <div class="text-big">...aaaaaaaaaaaaand done!</div>
+        </section>
+    </template>
+
+</div>
+
+<script src="src/main.js"></script>
+</body>
+</html>
