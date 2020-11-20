@@ -33,24 +33,24 @@ const app = () => {
         start () {
             this.step = 1;
 
-            this.buffer();
+            this.waitToStartExercise();
         },
         resume () {
-            this.buffer();
+            this.waitToStartExercise();
         },
         pause () {
             clearTimeout(timeline);
 
             this.state = STATES.PAUSED;
         },
-        buffer () {
+        waitToStartExercise () {
             this.state = STATES.BUFFER;
 
             setTimeout(() => {
-                this.oneTurn();
+                this.transitionToNextExercise();
             }, secInMs(this.duration.buffer));
         },
-        oneTurn () {
+        transitionToNextExercise () {
             this.state = STATES.BETWEEN;
 
             const startSound = new Audio(this.sound.start);
@@ -73,7 +73,7 @@ const app = () => {
 
                     this.step = this.step + 1;
 
-                    this.oneTurn();
+                    this.transitionToNextExercise();
                 }, secInMs(this.duration.exercise));
             }, secInMs(this.duration.between));
         },
