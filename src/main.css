@@ -24,6 +24,12 @@ body {
     padding: 1em;
 }
 
+.universe > * {
+    max-width: 640px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .text-center {
     text-align: center;
 }
