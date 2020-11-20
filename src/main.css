@@ -24,16 +24,26 @@ body {
     padding: 1em;
 }
 
+.universe > * {
+    max-width: 640px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .text-center {
     text-align: center;
 }
 
 .text-small {
-    font-size: .75em;
+    font-size: .75rem;
+}
+
+.text-medium {
+    font-size: 2rem;
 }
 
 .text-big {
-    font-size: 2em;
+    font-size: 3rem;
 }
 
 .vertical-stack > * + * {
@@ -50,7 +60,7 @@ body {
 }
 
 .control input {
-    width: 4em;
+    width: 4rem;
 }
 
 .horizontal-center-elements {

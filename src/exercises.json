@@ -1,14 +1,102 @@
 [
     {
         "name": "Head tilt ear to shoulder",
+        "details": "",
         "video": "assets/01.mp4"
     },
     {
         "name": "Head nodding no rotation",
+        "details": "",
         "video": "assets/02.mp4"
     },
     {
         "name": "Head nodding yes",
+        "details": "Don't flip the head back, just lift the eyes to the ceiling.",
         "video": "assets/03.mp4"
+    },
+    {
+        "name": "Head half circle rotation",
+        "details": "Avoid to squeeze the back of the neck.",
+        "video": "assets/04.mp4"
+    },
+    {
+        "name": "Shoulders roll forward",
+        "details": "",
+        "video": "assets/05.mp4"
+    },
+    {
+        "name": "Shoulders roll backward",
+        "details": "",
+        "video": "assets/06.mp4"
+    },
+    {
+        "name": "Arms open and close alternatively",
+        "details": "Keep abs in tight,hips fixed and knees slightly bent.",
+        "video": "assets/07.mp4"
+    },
+    {
+        "name": "Arms big full circles forward",
+        "details": "",
+        "video": "assets/08.mp4"
+    },
+    {
+        "name": "Arms big full circles forward",
+        "details": "",
+        "video": "assets/09.mp4"
+    },
+    {
+        "name": "Arms big full circles one arm forward the other backward",
+        "details": "",
+        "video": "assets/10.mp4"
+    },
+    {
+        "name": "Arms big full circles one arm forward the other backward. Switch side",
+        "details": "",
+        "video": "assets/11.mp4"
+    },
+    {
+        "name": "Knee lift",
+        "details": "Just hip hight.",
+        "video": "assets/12.mp4"
+    },
+    {
+        "name": "Leg curl, heel up",
+        "details": "",
+        "video": "assets/13.mp4"
+    },
+    {
+        "name": "Leg circle through the hip",
+        "details": "Try to get a good range of motion.",
+        "video": "assets/14.mp4"
+    },
+    {
+        "name": "Leg circle through the hip. Switch side",
+        "details": "Try to get a good range of motion.",
+        "video": "assets/15.mp4"
+    },
+    {
+        "name": "Heel dig",
+        "details": "Heel down toe up alternating legs.",
+        "video": "assets/16.mp4"
+    },
+    {
+        "name": "Spine flexion and extension",
+        "details": "Knees slightly bent. Breath lengthening the spine and exhale blowing all out engage the abs and curl the spine, the head comes down.",
+        "video": "assets/17.mp4"
+    },
+    {
+        "name": "Spine flexion and extension with arms swing",
+        "details": "Knees slightly bent. Breath lengthening the spine and exhale blowing all out. Engage the abs and curl the spine, the head comes down.",
+        "video": "assets/18.mp4"
+    },
+    {
+        "name": "Neck and shoulder stretch",
+        "details": "Build the stretch first in the neck then press the hand towards the floor. Breath relaxed.",
+        "video": "assets/19.mp4"
+    },
+    {
+        "name": "Neck and shoulder stretch. Switch side",
+        "details": "Build the stretch first in the neck then press the hand towards the floor. Breath relaxed.",
+        "video": "assets/20.mp4"
     }
 ]
