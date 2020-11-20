@@ -1,21 +1,21 @@
 [
     {
-        "name": "Head tilt ear to shoulder",
+        "name": "Head tilt ear-to-shoulder",
         "details": "",
         "video": "assets/01.mp4"
     },
     {
-        "name": "Head nodding no rotation",
+        "name": "Head tilt side-to-side",
         "details": "",
         "video": "assets/02.mp4"
     },
     {
-        "name": "Head nodding yes",
+        "name": "Head tilt up-and-down",
         "details": "Don't flip the head back, just lift the eyes to the ceiling.",
         "video": "assets/03.mp4"
     },
     {
-        "name": "Head half circle rotation",
+        "name": "Head half-circle rotation",
         "details": "Avoid to squeeze the back of the neck.",
         "video": "assets/04.mp4"
     },
@@ -35,22 +35,22 @@
         "video": "assets/07.mp4"
     },
     {
-        "name": "Arms big full circles forward",
+        "name": "Arm circles forward",
         "details": "",
         "video": "assets/08.mp4"
     },
     {
-        "name": "Arms big full circles forward",
+        "name": "Arm circles backward",
         "details": "",
         "video": "assets/09.mp4"
     },
     {
-        "name": "Arms big full circles one arm forward the other backward",
+        "name": "One arm circle forward, other backward",
         "details": "",
         "video": "assets/10.mp4"
     },
     {
-        "name": "Arms big full circles one arm forward the other backward. Switch side",
+        "name": "Switch side. One arm circle forward, other backward",
         "details": "",
         "video": "assets/11.mp4"
     },
@@ -60,17 +60,17 @@
         "video": "assets/12.mp4"
     },
     {
-        "name": "Leg curl, heel up",
+        "name": "Leg curl",
         "details": "",
         "video": "assets/13.mp4"
     },
     {
-        "name": "Leg circle through the hip",
+        "name": "Hip circle",
         "details": "Try to get a good range of motion.",
         "video": "assets/14.mp4"
     },
     {
-        "name": "Leg circle through the hip. Switch side",
+        "name": "Switch side. Hip circle",
         "details": "Try to get a good range of motion.",
         "video": "assets/15.mp4"
     },
@@ -95,7 +95,7 @@
         "video": "assets/19.mp4"
     },
     {
-        "name": "Neck and shoulder stretch. Switch side",
+        "name": "Switch side. Neck and shoulder stretch",
         "details": "Build the stretch first in the neck then press the hand towards the floor. Breath relaxed.",
         "video": "assets/20.mp4"
     }
