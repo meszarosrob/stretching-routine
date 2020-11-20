@@ -7,10 +7,10 @@ const STATES = {
     STARTED: 300,
     PAUSED: 400,
     BETWEEN: 500,
-    FINISHED: 600,
+    FINISHED: 600
 };
 
-let timeline = undefined;
+let timeline;
 
 const secInMs = (time) => {
     return time * 1000;
@@ -23,29 +23,29 @@ const app = () => {
         duration: {
             buffer: 5,
             exercise: 15,
-            between: 3,
+            between: 3
         },
-        start() {
+        start () {
             this.step = 1;
 
             this.buffer();
         },
-        resume() {
+        resume () {
             this.buffer();
         },
-        pause() {
+        pause () {
             clearTimeout(timeline);
 
             this.state = STATES.PAUSED;
         },
-        buffer() {
+        buffer () {
             this.state = STATES.BUFFER;
 
             setTimeout(() => {
                 this.oneTurn();
             }, secInMs(this.duration.buffer));
         },
-        oneTurn() {
+        oneTurn () {
             this.state = STATES.BETWEEN;
 
             timeline = setTimeout(() => {
@@ -63,11 +63,11 @@ const app = () => {
                 }, secInMs(this.duration.exercise));
             }, secInMs(this.duration.between));
         },
-        get exercise() {
+        get exercise () {
             const index = this.step - 1;
 
             return exercises[index];
-        },
+        }
     };
 };
 

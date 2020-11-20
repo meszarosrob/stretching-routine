@@ -1,17 +1,25 @@
 {
     "name": "stretching-routine",
     "version": "1.0.0",
-    "description": "",
+    "description": "The stretching routine with duration settings and sound effects.",
     "main": "src/main.js",
     "dependencies": {
         "alpinejs": "^2.7.3"
     },
     "devDependencies": {
+        "eslint": "^7.13.0",
+        "eslint-config-standard": "^16.0.2",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.1.0",
         "parcel-bundler": "^1.12.4"
     },
     "scripts": {
         "serve": "parcel index.html",
-        "build": "parcel build index.html"
+        "build": "parcel build index.html",
+        "lint": "eslint 'src/**/*.{js,ts,tsx}'",
+        "lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix"
     },
     "license": "ISC"
 }
