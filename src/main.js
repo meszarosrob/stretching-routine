@@ -52,21 +52,30 @@ const app = () => {
         },
         oneTurn () {
             this.state = STATES.BETWEEN;
-            const startSound = new Audio(this.soundEffect.start);
-            const stopSound = new Audio(this.soundEffect.stop);
+
+            const startSound = new Audio(this.sound.start);
+            const stopSound = new Audio(this.sound.stop);
+
+            if (this.step !== 1) {
+                stopSound.play();
+            }
+
             timeline = setTimeout(() => {
                 this.state = STATES.STARTED;
+
                 startSound.play();
+
                 timeline = setTimeout(() => {
                     if (this.step === exercises.length) {
                         this.state = STATES.FINISHED;
                         return;
                     }
+
                     this.step = this.step + 1;
+
                     this.oneTurn();
                 }, secInMs(this.duration.exercise));
             }, secInMs(this.duration.between));
-            stopSound.play();
         },
         get exercise () {
             const index = this.step - 1;
