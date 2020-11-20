@@ -143,10 +143,13 @@
     <template x-if="state === states.PAUSED"
               key="state-paused">
         <section>
-            <button type="button"
-                    x-on:click.prevent="resume()">
-                Resume
-            </button>
+            <div class="horizontal-stack horizontal-center-elements">
+                <button type="button"
+                        x-on:click.prevent="resume()">
+                    Resume
+                </button>
+                <div>from <span x-text="exercise.name"></span></div>
+            </div>
         </section>
     </template>
 
