@@ -18,7 +18,7 @@ const secInMs = (time) => {
 };
 
 const randomIntFromOneUntil = (max) => {
-    return Math.floor(Math.random() * max) + 1;
+    return Math.floor(Math.random() * (max - 1)) + 1;
 };
 
 const saveToLocalStorage = (key, val) => {
