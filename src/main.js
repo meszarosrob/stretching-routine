@@ -67,11 +67,17 @@ const app = () => {
             if (localStorage.getItem('sound.start') === null) {
                 this.sound.start = sounds[randomIntFromOneUntil(
                     sounds.length)].src;
+            } else {
+                this.sound.start = localStorage.getItem(
+                    'sound.start');
             }
 
             if (localStorage.getItem('sound.stop') === null) {
                 this.sound.stop = sounds[randomIntFromOneUntil(
                     sounds.length)].src;
+            } else {
+                this.sound.stop = localStorage.getItem(
+                    'sound.stop');
             }
         },
         start () {
