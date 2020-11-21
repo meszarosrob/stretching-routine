@@ -64,16 +64,14 @@ const app = () => {
             const startSound = new Audio(this.sound.start);
             const stopSound = new Audio(this.sound.stop);
 
-            if (this.step !== 1) {
-                stopSound.play();
-            }
-
             timeline = setTimeout(() => {
                 this.state = STATES.STARTED;
 
                 startSound.play();
 
                 timeline = setTimeout(() => {
+                    stopSound.play();
+
                     if (this.step === exercises.length) {
                         this.state = STATES.FINISHED;
                         return;
