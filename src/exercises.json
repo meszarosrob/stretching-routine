@@ -1,82 +1,82 @@
 [
     {
         "name": "Head tilt ear-to-shoulder",
-        "src": "assets/01.mp4"
+        "src": "assets/clips/01.mp4"
     },
     {
         "name": "Head tilt side-to-side",
-        "src": "assets/02.mp4"
+        "src": "assets/clips/02.mp4"
     },
     {
         "name": "Head tilt up-and-down",
-        "src": "assets/03.mp4"
+        "src": "assets/clips/03.mp4"
     },
     {
         "name": "Head half-circle rotation",
-        "src": "assets/04.mp4"
+        "src": "assets/clips/04.mp4"
     },
     {
         "name": "Shoulders roll forward",
-        "src": "assets/05.mp4"
+        "src": "assets/clips/05.mp4"
     },
     {
         "name": "Shoulders roll backward",
-        "src": "assets/06.mp4"
+        "src": "assets/clips/06.mp4"
     },
     {
         "name": "Arms open and close alternatively",
-        "src": "assets/07.mp4"
+        "src": "assets/clips/07.mp4"
     },
     {
         "name": "Arm circles forward",
-        "src": "assets/08.mp4"
+        "src": "assets/clips/08.mp4"
     },
     {
         "name": "Arm circles backward",
-        "src": "assets/09.mp4"
+        "src": "assets/clips/09.mp4"
     },
     {
         "name": "One arm circle forward, other backward",
-        "src": "assets/10.mp4"
+        "src": "assets/clips/10.mp4"
     },
     {
         "name": "Switch side. One arm circle forward, other backward",
-        "src": "assets/11.mp4"
+        "src": "assets/clips/11.mp4"
     },
     {
         "name": "Knee lift",
-        "src": "assets/12.mp4"
+        "src": "assets/clips/12.mp4"
     },
     {
         "name": "Leg curl",
-        "src": "assets/13.mp4"
+        "src": "assets/clips/13.mp4"
     },
     {
         "name": "Hip circle",
-        "src": "assets/14.mp4"
+        "src": "assets/clips/14.mp4"
     },
     {
         "name": "Switch side. Hip circle",
-        "src": "assets/15.mp4"
+        "src": "assets/clips/15.mp4"
     },
     {
         "name": "Heel dig",
-        "src": "assets/16.mp4"
+        "src": "assets/clips/16.mp4"
     },
     {
         "name": "Spine flexion and extension",
-        "src": "assets/17.mp4"
+        "src": "assets/clips/17.mp4"
     },
     {
         "name": "Spine flexion and extension with arms swing",
-        "src": "assets/18.mp4"
+        "src": "assets/clips/18.mp4"
     },
     {
         "name": "Neck and shoulder stretch",
-        "src": "assets/19.mp4"
+        "src": "assets/clips/19.mp4"
     },
     {
         "name": "Switch side. Neck and shoulder stretch",
-        "src": "assets/20.mp4"
+        "src": "assets/clips/20.mp4"
     }
 ]
