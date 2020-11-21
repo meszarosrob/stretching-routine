@@ -21,8 +21,27 @@ const randomIntFromOneUntil = (max) => {
     return Math.floor(Math.random() * (max - 1)) + 1;
 };
 
-const saveToLocalStorage = (key, val) => {
-    localStorage.setItem(key, val);
+const syncWithLocalStorage = (
+    namespace,
+    key,
+    storage,
+    watcher,
+    fallbackValue = null
+) => {
+    watcher(
+        `${namespace}.${key}`,
+        (value) => localStorage.setItem(`${namespace}.${key}`, value)
+    );
+
+    const localStorageValue = localStorage.getItem(`${namespace}.${key}`);
+
+    if (localStorageValue !== null) {
+        storage[namespace][key] = localStorage.getItem(`${namespace}.${key}`);
+    }
+
+    if (localStorageValue === null && fallbackValue !== null) {
+        storage[namespace][key] = fallbackValue;
+    }
 };
 
 const app = () => {
@@ -40,26 +59,13 @@ const app = () => {
         },
         init (watcher) {
             for (const key in this.duration) {
-                watcher(`duration.${key}`,
-                    (val) => saveToLocalStorage(`duration.${key}`, val));
-
-                if (localStorage.getItem(`duration.${key}`) !== null) {
-                    this.duration[key] = localStorage.getItem(
-                        `duration.${key}`);
-                }
+                syncWithLocalStorage('duration', key, this, watcher);
             }
 
             for (const key in this.sound) {
-                watcher(`sound.${key}`,
-                    (val) => saveToLocalStorage(`sound.${key}`, val));
+                const randomSound = sounds[randomIntFromOneUntil(sounds.length)].src;
 
-                if (localStorage.getItem(`sound.${key}`) !== null) {
-                    this.sound[key] = localStorage.getItem(
-                        `sound.${key}`);
-                } else {
-                    this.sound[key] = sounds[randomIntFromOneUntil(
-                        sounds.length)].src;
-                }
+                syncWithLocalStorage('sound', key, this, watcher, randomSound);
             }
         },
         start () {
