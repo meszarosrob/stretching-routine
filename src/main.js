@@ -69,9 +69,10 @@ const app = () => {
             }
 
             for (const key in this.sound) {
-                const randomSound = sounds[randomIntFromOneUntil(sounds.length)].src;
+                const randomSoundIndex = randomIntFromOneUntil(sounds.length);
+                const soundSrc = sounds[randomSoundIndex].src;
 
-                syncWithLocalStorage('sound', key, this, watcher, randomSound);
+                syncWithLocalStorage('sound', key, this, watcher, soundSrc);
             }
 
             watcher('sound.start', (value) => previewSound(value));
