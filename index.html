@@ -10,7 +10,8 @@
 <body>
 
 <div class="universe"
-     x-data="app()">
+     x-data="app()"
+     x-init="() => { init() }">
 
     <section class="settings vertical-stack"
              x-show="state === states.SETTINGS">

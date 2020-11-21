@@ -17,6 +17,10 @@ const secInMs = (time) => {
     return time * 1000;
 };
 
+const randomIntFromOneUntil = (max) => {
+    return Math.floor(Math.random() * max) + 1;
+};
+
 const app = () => {
     return {
         state: STATES.SETTINGS,
@@ -27,8 +31,12 @@ const app = () => {
             between: 3
         },
         sound: {
-            start: 'assets/soundEffects/sound-01.mp3',
-            stop: 'assets/soundEffects/sound-07.mp3'
+            start: '',
+            stop: ''
+        },
+        init () {
+            this.sound.start = sounds[randomIntFromOneUntil(sounds.length)].src;
+            this.sound.stop = sounds[randomIntFromOneUntil(sounds.length)].src;
         },
         start () {
             this.step = 1;
