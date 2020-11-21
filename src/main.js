@@ -39,45 +39,27 @@ const app = () => {
             stop: ''
         },
         init (watcher) {
-            watcher('duration.buffer',
-                (val) => saveToLocalStorage('duration.buffer', val));
-            watcher('duration.exercise',
-                (val) => saveToLocalStorage('duration.exercise', val));
-            watcher('duration.between',
-                (val) => saveToLocalStorage('duration.between', val));
-            watcher('sound.start',
-                (val) => saveToLocalStorage('sound.start', val));
-            watcher('sound.stop',
-                (val) => saveToLocalStorage('sound.stop', val));
+            for (const key in this.duration) {
+                watcher(`duration.${key}`,
+                    (val) => saveToLocalStorage(`duration.${key}`, val));
 
-            if (localStorage.getItem('duration.buffer') !== null) {
-                this.duration.buffer = localStorage.getItem('duration.buffer');
+                if (localStorage.getItem(`duration.${key}`) !== null) {
+                    this.duration[key] = localStorage.getItem(
+                        `duration.${key}`);
+                }
             }
 
-            if (localStorage.getItem('duration.exercise') !== null) {
-                this.duration.exercise = localStorage.getItem(
-                    'duration.exercise');
-            }
+            for (const key in this.sound) {
+                watcher(`sound.${key}`,
+                    (val) => saveToLocalStorage(`sound.${key}`, val));
 
-            if (localStorage.getItem('duration.between') !== null) {
-                this.duration.between = localStorage.getItem(
-                    'duration.between');
-            }
-
-            if (localStorage.getItem('sound.start') === null) {
-                this.sound.start = sounds[randomIntFromOneUntil(
-                    sounds.length)].src;
-            } else {
-                this.sound.start = localStorage.getItem(
-                    'sound.start');
-            }
-
-            if (localStorage.getItem('sound.stop') === null) {
-                this.sound.stop = sounds[randomIntFromOneUntil(
-                    sounds.length)].src;
-            } else {
-                this.sound.stop = localStorage.getItem(
-                    'sound.stop');
+                if (localStorage.getItem(`sound.${key}`) !== null) {
+                    this.sound[key] = localStorage.getItem(
+                        `sound.${key}`);
+                } else {
+                    this.sound[key] = sounds[randomIntFromOneUntil(
+                        sounds.length)].src;
+                }
             }
         },
         start () {
