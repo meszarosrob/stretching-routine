@@ -54,7 +54,7 @@
             <label class="horizontal-stack">
                 <span>Play</span>
                 <select x-model="sound.start">
-                    <option disabled selected value="">Select sound</option>
+                    <option disabled selected>Select sound</option>
                     <template x-for="(item, index) in sounds"
                               x-bind:key="'sound-start-' + index">
                         <option x-bind:value="item.src"
