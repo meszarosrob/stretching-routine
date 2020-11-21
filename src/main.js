@@ -44,6 +44,12 @@ const syncWithLocalStorage = (
     }
 };
 
+const previewSound = (src) => {
+    const sound = new Audio(src);
+
+    sound.play();
+};
+
 const app = () => {
     return {
         state: STATES.SETTINGS,
@@ -67,6 +73,9 @@ const app = () => {
 
                 syncWithLocalStorage('sound', key, this, watcher, randomSound);
             }
+
+            watcher('sound.start', (value) => previewSound(value));
+            watcher('sound.stop', (value) => previewSound(value));
         },
         start () {
             this.step = 1;
