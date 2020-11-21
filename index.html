@@ -11,7 +11,7 @@
 
 <div class="universe"
      x-data="app()"
-     x-init="() => { init() }">
+     x-init="() => { init($watch) }">
 
     <section class="settings vertical-stack"
              x-show="state === states.SETTINGS">

@@ -21,6 +21,10 @@ const randomIntFromOneUntil = (max) => {
     return Math.floor(Math.random() * max) + 1;
 };
 
+const saveToLocalStorage = (key, val) => {
+    localStorage.setItem(key, val);
+};
+
 const app = () => {
     return {
         state: STATES.SETTINGS,
@@ -34,9 +38,41 @@ const app = () => {
             start: '',
             stop: ''
         },
-        init () {
-            this.sound.start = sounds[randomIntFromOneUntil(sounds.length)].src;
-            this.sound.stop = sounds[randomIntFromOneUntil(sounds.length)].src;
+        init (watcher) {
+            watcher('duration.buffer',
+                (val) => saveToLocalStorage('duration.buffer', val));
+            watcher('duration.exercise',
+                (val) => saveToLocalStorage('duration.exercise', val));
+            watcher('duration.between',
+                (val) => saveToLocalStorage('duration.between', val));
+            watcher('sound.start',
+                (val) => saveToLocalStorage('sound.start', val));
+            watcher('sound.stop',
+                (val) => saveToLocalStorage('sound.stop', val));
+
+            if (localStorage.getItem('duration.buffer') !== null) {
+                this.duration.buffer = localStorage.getItem('duration.buffer');
+            }
+
+            if (localStorage.getItem('duration.exercise') !== null) {
+                this.duration.exercise = localStorage.getItem(
+                    'duration.exercise');
+            }
+
+            if (localStorage.getItem('duration.between') !== null) {
+                this.duration.between = localStorage.getItem(
+                    'duration.between');
+            }
+
+            if (localStorage.getItem('sound.start') === null) {
+                this.sound.start = sounds[randomIntFromOneUntil(
+                    sounds.length)].src;
+            }
+
+            if (localStorage.getItem('sound.stop') === null) {
+                this.sound.stop = sounds[randomIntFromOneUntil(
+                    sounds.length)].src;
+            }
         },
         start () {
             this.step = 1;
