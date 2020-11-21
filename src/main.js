@@ -81,12 +81,10 @@ const app = () => {
             const index = this.step - 1;
 
             return exercises[index];
-        },
-        get soundEffects () {
-            return sounds;
         }
     };
 };
 
 window.states = STATES;
+window.sounds = sounds;
 window.app = app;

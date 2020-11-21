@@ -53,10 +53,11 @@
             <label class="horizontal-stack">
                 <span>Play</span>
                 <select x-model="sound.start">
-                    <template x-for="effect in soundEffects">
-                        <option :key="effect.src"
-                                x-bind:value="effect.src"
-                                x-text="effect.name"></option>
+                    <option disabled selected value="">Select sound</option>
+                    <template x-for="(item, index) in sounds"
+                              x-bind:key="'sound-start-' + index">
+                        <option x-bind:value="item.src"
+                                x-text="item.name"></option>
                     </template>
                 </select>
                 <span>when the exercise starts.</span>
@@ -67,10 +68,11 @@
             <label class="horizontal-stack">
                 <span>When exercise ends, play</span>
                 <select x-model="sound.stop">
-                    <template x-for="effect in soundEffects">
-                        <option :key="effect.src"
-                                x-bind:value="effect.src"
-                                x-text="effect.name"></option>
+                    <option disabled selected>Select sound</option>
+                    <template x-for="(item, index) in sounds"
+                              x-bind:key="'sound-stop-' + index">
+                        <option x-bind:value="item.src"
+                                x-text="item.name"></option>
                     </template>
                 </select>
                 <span>.</span>
