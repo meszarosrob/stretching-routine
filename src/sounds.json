@@ -21,11 +21,11 @@
     },
     {
         "name": "Cartoon bell",
-        "sound": "assets/soundEffects/sound-06.mp3"
+        "src": "assets/soundEffects/sound-06.mp3"
     },
     {
         "name": "Censor beep",
-        "sound": "assets/soundEffects/sound-07.mp3"
+        "src": "assets/soundEffects/sound-07.mp3"
     },
     {
         "name": "Doorbell",
