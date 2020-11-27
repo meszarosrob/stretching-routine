@@ -55,9 +55,9 @@ const app = () => {
         state: STATES.SETTINGS,
         step: 1,
         duration: {
-            buffer: 5,
-            exercise: 15,
-            between: 3
+            buffer: 10,
+            exercise: 30,
+            between: 4
         },
         sound: {
             start: '',
