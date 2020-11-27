@@ -7,7 +7,7 @@ This is the web version of the stretching routine from the [Physiology and Fitne
 
 ## The story
 
-This is a weekend project.
+...
 
 ## Misc
 
