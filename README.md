@@ -18,9 +18,11 @@ The sound does not play in mobile browsers, but this could be solved with this [
 
 But the need to implement these so far did not arise.
 
+---
+
 ## Development
 
-`npm install` to install the dependencies.
+Assuming you have `node` and `npm` already installed, run `npm install` to install the dependencies.
 
 To quickly get the local version up and running, run `npm run-script serve`. This command will start a server, typically at `http://localhost:1234`.
 
