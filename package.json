@@ -1,6 +1,5 @@
 {
     "name": "stretching-routine",
-    "version": "1.0.0",
     "description": "Stretching routine with duration settings and sound effects",
     "main": "src/main.js",
     "dependencies": {

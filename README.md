@@ -26,7 +26,9 @@ To quickly get the local version up and running, run `npm run-script serve`. Thi
 
 At the moment, the build command does not copy over the asset (clips, sounds) files; to do that, run: `cp -R assets/ dist/`.
 
-If you plan to make a pull request, before committing, lint the JavaScript files with ESLint: `npm run-script lint:fix`.
+If you plan to make a pull request, before committing, lint the JavaScript files with ESLint: `npm run-script lint:fix`. But the best would be if you would fork it and do whatever you want with that version.
+
+This is a weekend project, done to have fun; there is no changelog or versioning.
 
 ## Hosting
 
