@@ -11,10 +11,12 @@ This is the web version of the stretching routine from the [Physiology and Fitne
 
 ## Misc
 
-During the stretch, keep the browser tab active. [Timeouts in inactive tab](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#Timeouts_in_inactive_tabs_throttled_to_%E2%89%A5_1000ms) are handled differently by browsers.
-[worker-timers](https://github.com/chrisguttandin/worker-timers) is a replacement for the `setTimeout` and can overcome this limitation.
+You should keep the browser tab active during the stretch, and don't be surprised if the sound does not play in a mobile browser.
 
-The sound does not play in mobile browsers, but this could be solved with this [howler.js](https://github.com/goldfire/howler.js#mobilechrome-playback), as it's capable of unlocking the audio playback automatically. 
+[Timeouts in inactive tabs](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#Timeouts_in_inactive_tabs_throttled_to_%E2%89%A5_1000ms) are handled differently than on active tabs.
+The [worker-timers](https://github.com/chrisguttandin/worker-timers) package is a replacement for the `setTimeout` (that is used here in the most naive way) and can help with some strange edge cases.
+
+As for the sound, that could be solved by using [howler.js](https://github.com/goldfire/howler.js#mobilechrome-playback), as it's capable of unlocking the audio playback automatically. 
 
 But the need to implement these so far did not arise.
 
@@ -28,7 +30,7 @@ To quickly get the local version up and running, run `npm run-script serve`. Thi
 
 At the moment, the build command does not copy over the asset (clips, sounds) files; to do that, run: `cp -R assets/ dist/`.
 
-If you plan to make a pull request, before committing, lint the JavaScript files with ESLint: `npm run-script lint:fix`. But the best would be if you would fork it and do whatever you want with that version.
+If you plan to make a pull request, before committing, lint the JavaScript files with ESLint: `npm run-script lint:fix`.
 
 This is a weekend project, done to have fun; there is no changelog or versioning.
 
@@ -36,11 +38,11 @@ This is a weekend project, done to have fun; there is no changelog or versioning
 
 It's hosted on [Netlify](https://www.netlify.com) at [stretching-routine.netlify.app](https://stretching-routine.netlify.app).
 
-The deploy a new version of the "app" push the updates to the `main` branch. The [badge](https://docs.netlify.com/monitor-sites/status-badges/) will indicate the status of the deployment.
+The deployment is triggered when a commit is pushed to the `main` branch. The [badge](https://docs.netlify.com/monitor-sites/status-badges/) will indicate the status of the deployment.
 
 #### Deployment settings
 
-In case you want to host your version of this, these are the settings in place:
+In case you want to host your version there, use these settings:
 
 - Build command: `npm run-script build && cp -R assets/ dist/`
 - Publish directory: `dist`
