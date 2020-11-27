@@ -3,357 +3,408 @@
         "name": "Head tilt ear-to-shoulder",
         "src": "assets/clips/01.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Head tilt side-to-side",
         "src": "assets/clips/02.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Head tilt up-and-down",
         "src": "assets/clips/03.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Head half-circle rotation",
         "src": "assets/clips/04.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Shoulders roll forward",
         "src": "assets/clips/05.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Shoulders roll backward",
         "src": "assets/clips/06.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Arms open and close alternatively",
         "src": "assets/clips/07.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Arm circles forward",
         "src": "assets/clips/08.mp4",
         "ratio": {
-            "duration": 0.5
+            "duration": 0.5,
+            "pause": 1
         }
     },
     {
         "name": "Arm circles backward",
         "src": "assets/clips/09.mp4",
         "ratio": {
-            "duration": 0.5
+            "duration": 0.5,
+            "pause": 1
         }
     },
     {
         "name": "One arm circle forward, other backward",
         "src": "assets/clips/10.mp4",
         "ratio": {
-            "duration": 0.5
+            "duration": 0.5,
+            "pause": 1
         }
     },
     {
         "name": "The other arm circle forward, other backward",
         "src": "assets/clips/11.mp4",
         "ratio": {
-            "duration": 0.5
+            "duration": 0.5,
+            "pause": 1
         }
     },
     {
         "name": "Knee lift",
         "src": "assets/clips/12.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Leg curl",
         "src": "assets/clips/13.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Hip circle",
         "src": "assets/clips/14.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Switch side. Hip circle",
         "src": "assets/clips/15.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Heel dig",
         "src": "assets/clips/16.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Spine flexion-extension",
         "src": "assets/clips/17.mp4",
         "ratio": {
-            "duration": 2
+            "duration": 2,
+            "pause": 1
         }
     },
     {
         "name": "Spine flexion-extension with arms swing",
         "src": "assets/clips/18.mp4",
         "ratio": {
-            "duration": 2
+            "duration": 2,
+            "pause": 1
         }
     },
     {
         "name": "Neck and shoulder",
         "src": "assets/clips/19.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Switch side. Neck and shoulder",
         "src": "assets/clips/20.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Shoulder",
         "src": "assets/clips/21.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Switch side. Shoulder",
         "src": "assets/clips/22.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Chest",
         "src": "assets/clips/23.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Shoulder blades apart",
         "src": "assets/clips/24.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Triceps",
         "src": "assets/clips/25.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "The other triceps ",
         "src": "assets/clips/26.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Standing lower back curl",
         "src": "assets/clips/27.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Hip flexor",
         "src": "assets/clips/28.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "The other hip flexor",
         "src": "assets/clips/29.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Quadriceps",
         "src": "assets/clips/30.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "The other quadriceps",
         "src": "assets/clips/31.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Hamstring",
         "src": "assets/clips/32.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "The other hamstring",
         "src": "assets/clips/33.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Inner thighs",
         "src": "assets/clips/34.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Iliotibiad band",
         "src": "assets/clips/35.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "The other iliotibiad band",
         "src": "assets/clips/36.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Calf",
         "src": "assets/clips/37.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Same leg achilles tendon",
         "src": "assets/clips/38.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "The other calf",
         "src": "assets/clips/39.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Same leg achilles tendon",
         "src": "assets/clips/40.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 1
         }
     },
     {
         "name": "Lower back curl",
         "src": "assets/clips/41.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 2
         }
     },
     {
         "name": "Needle pose (simplified)",
         "src": "assets/clips/42.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 2
         }
     },
     {
         "name": "The other side needle pose (simplified)",
         "src": "assets/clips/43.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 2
         }
     },
     {
         "name": "Shoulder twist and back rotation opening chest",
         "src": "assets/clips/44.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 2
         }
     },
     {
         "name": "Switch side. Shoulder twist and back rotation opening chest",
         "src": "assets/clips/45.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 2
         }
     },
     {
         "name": "Upward dog",
         "src": "assets/clips/46.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 2
         }
     },
     {
         "name": "Child's pose",
         "src": "assets/clips/47.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 2
         }
     },
     {
         "name": "Swan position",
         "src": "assets/clips/48.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 2
         }
     },
     {
         "name": "The other swan position",
         "src": "assets/clips/49.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 2
         }
     },
     {
         "name": "Wide leg",
         "src": "assets/clips/50.mp4",
         "ratio": {
-            "duration": 1
+            "duration": 1,
+            "pause": 2
         }
     },
     {
         "name": "Corpse pose",
         "src": "assets/clips/51.mp4",
         "ratio": {
-            "duration": 2
+            "duration": 2,
+            "pause": 2
         }
     }
 ]

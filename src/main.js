@@ -104,10 +104,18 @@ const app = () => {
             const startSound = new Audio(this.sound.start);
             const stopSound = new Audio(this.sound.stop);
 
+            const pauseDuration = secInMs(
+                this.duration.between * this.exercise.ratio.pause
+            );
+
             timeline = setTimeout(() => {
                 this.state = STATES.STARTED;
 
                 startSound.play();
+
+                const exerciseDuration = secInMs(
+                    this.duration.exercise * this.exercise.ratio.duration
+                );
 
                 timeline = setTimeout(() => {
                     stopSound.play();
@@ -116,10 +124,12 @@ const app = () => {
                         this.state = STATES.FINISHED;
                         return;
                     }
+
                     this.step = this.step + 1;
+
                     this.transitionToNextExercise();
-                }, secInMs(this.duration.exercise * this.exercise.ratio.duration));
-            }, secInMs(this.duration.between));
+                }, exerciseDuration);
+            }, pauseDuration);
         },
         get exercise () {
             const index = this.step - 1;
