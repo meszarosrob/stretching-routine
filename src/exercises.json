@@ -32,7 +32,7 @@
     {
         "name": "Arms open and close alternatively",
         "src": "assets/clips/07.mp4",
-        "multiplier": 0.5
+        "multiplier": 1
     },
     {
         "name": "Arm circles forward",
