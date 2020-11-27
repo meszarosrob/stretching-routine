@@ -116,11 +116,9 @@ const app = () => {
                         this.state = STATES.FINISHED;
                         return;
                     }
-
                     this.step = this.step + 1;
-
                     this.transitionToNextExercise();
-                }, secInMs(this.duration.exercise));
+                }, secInMs(this.duration.exercise * exercises[this.step - 1].multiplier));
             }, secInMs(this.duration.between));
         },
         get exercise () {

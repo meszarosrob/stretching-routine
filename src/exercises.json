@@ -2,7 +2,7 @@
     {
         "name": "Head tilt ear-to-shoulder",
         "src": "assets/clips/01.mp4",
-        "multiplier": 0.5
+        "multiplier": 1
     },
     {
         "name": "Head tilt side-to-side",
