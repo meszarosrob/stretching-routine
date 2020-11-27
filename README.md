@@ -7,7 +7,7 @@ This is the web version of the stretching routine from the [Physiology and Fitne
 
 ## The story
 
-...
+The challenge was to do the stretching routine every day with the help of a video. Eventually, after some repetitions, the video turns into something monotonous, and you just want to put some music or a podcast, but let's be honest sometimes the memory fails. Then you wish you could just take a peek, but from some positions, that's really hard. So the *everyday normal developer* rolls up the sleeves and tears the video apart into custom duration exercises, for those days where you feel like taking care of yourself. There's a setting to decide the time between positions, and there are even bell sounds to let you know it's time to change posture when you are lying on the ground. Pure efficiency delight!
 
 ## Misc
 
