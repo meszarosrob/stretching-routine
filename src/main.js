@@ -118,7 +118,7 @@ const app = () => {
                     }
                     this.step = this.step + 1;
                     this.transitionToNextExercise();
-                }, secInMs(this.duration.exercise * exercises[this.step - 1].multiplier));
+                }, secInMs(this.duration.exercise * this.exercise.multiplier));
             }, secInMs(this.duration.between));
         },
         get exercise () {
