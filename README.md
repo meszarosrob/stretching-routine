@@ -11,7 +11,7 @@ This is the web version of the stretching routine from the [Physiology and Fitne
 To get the local version up and running, run `npm run-script serve`.
 After this, copy to assets to the build directory with: `cp -R assets/ dist/`.
 
-Before committing, lint the JavaScript files with ESLint: `npm run-script lint`.
+Before committing, lint the JavaScript files with ESLint: `npm run-script lint:fix`.
 
 ## Hosting
 
