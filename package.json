@@ -21,5 +21,5 @@
         "lint": "eslint 'src/**/*.{js,ts,tsx}'",
         "lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix"
     },
-    "license": "ISC"
+    "license": "Unlicense"
 }
