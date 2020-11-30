@@ -3,11 +3,11 @@
 ![QA](https://github.com/meszarosrob/stretching-routine/workflows/QA/badge.svg)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/67e36f90-6640-4ac2-b2ed-e661d72329ae/deploy-status)](https://app.netlify.com/sites/stretching-routine/deploys)
 
-This is the web version of the stretching routine from the [Physiology and Fitness](https://www.thegreatcoursesplus.com/physiology-and-fitness) course (episode 36) with duration settings and sound effects.
+This is the web version of the stretching routine from the [Physiology and Fitness](https://www.thegreatcoursesplus.com/physiology-and-fitness) course (episode 36) with duration settings and sound signaling.
 
 ## The story
 
-The challenge was to do the stretching routine every day with the help of a video. Eventually, after some repetitions, the video turns into something monotonous, and you just want to put some music or a podcast, but let's be honest sometimes the memory fails. Then you wish you could just take a peek, but from some positions, that's really hard. So the *everyday normal developer* rolls up the sleeves and tears the video apart into custom duration exercises, for those days where you feel like taking care of yourself. Includes a setting to decide the time between positions, and even bell sounds to let you know it's time to change posture when you are lying on the ground. Pure efficiency delight!
+In an attempt to break my sedentary lifestyle, I challenge myself for 30 days stretching routine. Halfway through, while I could not do it entirely unaided, I needed less instruction. Nevertheless, this gave me the freedom to catch up with some podcasts. But it turns out it's not that easy to remain in sync with an instructional video that is playing on mute while you are on the floor and listening about atomic tattoos. This led to the idea of having sound signals at the beginning and end of an exercise, then the rest followed.
 
 ## Misc
 
