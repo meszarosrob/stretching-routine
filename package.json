@@ -1,6 +1,6 @@
 {
     "name": "stretching-routine",
-    "description": "Stretching routine with duration settings and sound effects",
+    "description": "Stretching routine with duration settings and sound signaling",
     "main": "src/main.js",
     "dependencies": {
         "alpinejs": "^2.7.3"
