@@ -7,7 +7,7 @@ This is the web version of the stretching routine from the [Physiology and Fitne
 
 ## The story
 
-In an attempt to break my sedentary lifestyle, I challenge myself for 30 days stretching routine. Halfway through, while I could not do it entirely unaided, I needed less instruction. Nevertheless, this gave me the freedom to catch up with some podcasts. But it turns out it's not that easy to remain in sync with an instructional video that is playing on mute while you are on the floor and listening about atomic tattoos. This led to the idea of having sound signals at the beginning and end of an exercise, then the rest followed.
+In an attempt to break my sedentary lifestyle, I challenged myself for 30 days stretching routine. Halfway through, while I could not do it entirely unaided, I needed less instruction. Nevertheless, this gave me the freedom to catch up with some podcasts. But it turns out it's not that easy to remain in sync with an instructional video that is playing on mute while you are on the floor and listening about atomic tattoos. This led to the idea of having sound signals at the beginning and end of an exercise, then the rest followed.
 
 ## Misc
 
