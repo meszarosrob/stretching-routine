@@ -1,6 +1,5 @@
 # Stretching Routine
 
-![QA](https://github.com/meszarosrob/stretching-routine/workflows/QA/badge.svg)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/67e36f90-6640-4ac2-b2ed-e661d72329ae/deploy-status)](https://app.netlify.com/sites/stretching-routine/deploys)
 
 This is the web version of the stretching routine from the [Physiology and Fitness](https://www.thegreatcoursesplus.com/physiology-and-fitness) course (episode 36) with duration settings and sound signaling.
