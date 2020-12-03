@@ -67,3 +67,11 @@ body {
 .horizontal-center-elements {
     justify-content: center;
 }
+
+details summary {
+    cursor: pointer;
+}
+
+details p {
+    margin-top: 1em;
+}
