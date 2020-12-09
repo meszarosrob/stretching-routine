@@ -17,6 +17,21 @@ const secInMs = (time) => {
     return time * 1000;
 };
 
+const totalTime = (duration) => {
+    let loop = 0;
+    exercises.forEach(element => {
+        const exerciseDuration = secInMs(
+            duration.exercise * element.ratio.duration
+        );
+        const pauseDuration = secInMs(
+            duration.between * element.ratio.pause
+        );
+        loop += exerciseDuration + pauseDuration;
+    });
+
+    return duration.buffer + loop;
+};
+
 const randomIntFromOneUntil = (max) => {
     return Math.floor(Math.random() * (max - 1)) + 1;
 };
@@ -77,11 +92,13 @@ const app = () => {
 
             watcher('sound.start', (value) => previewSound(value));
             watcher('sound.stop', (value) => previewSound(value));
+            this.printTime(totalTime(this.duration));
         },
         start () {
             this.step = 1;
 
             this.waitToStartExercise();
+            this.move();
         },
         resume () {
             this.waitToStartExercise();
@@ -135,6 +152,34 @@ const app = () => {
             const index = this.step - 1;
 
             return exercises[index];
+        },
+        printTime (time) {
+            const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((time % (1000 * 60)) / 1000);
+            document.getElementById('time').innerHTML = 'Session: ' + minutes + 'm ' + seconds + 's ';
+        },
+        move () {
+            const elem = document.getElementById('myBar');
+            let width = 0;
+            const id = setInterval(frame, 1000);
+            const sessionLenghtNormalized = (100 / (totalTime(this.duration) / 1000));
+            function frame () {
+                if (width >= 100) {
+                    clearInterval(id);
+                } else {
+                    width = width + sessionLenghtNormalized;
+                    if (width > 33 && width < 66) {
+                        elem.style.width = width + '%';
+                        elem.style['background-color'] = '#ffdc7c';
+                    } else if (width >= 66) {
+                        elem.style.width = width + '%';
+                        elem.style['background-color'] = '#6ba292';
+                    } else {
+                        elem.style.width = width + '%';
+                        elem.style['background-color'] = '#ff9071';
+                    }
+                }
+            }
         }
     };
 };

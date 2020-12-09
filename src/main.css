@@ -22,6 +22,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 1em;
+
 }
 
 .universe > * {
@@ -29,6 +30,7 @@ body {
     max-width: 640px;
     margin-right: auto;
     margin-left: auto;
+
 }
 
 .text-center {
@@ -74,4 +76,50 @@ details summary {
 
 details p {
     margin-top: 1em;
+}
+
+#timer {
+
+}
+
+#time {
+    height: 30px;
+}
+
+#linear {
+    height: 30px;
+
+    background-color: #dde6f0;
+    border-radius: 5%;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    padding: 0;
+    z-index: 1;
+}
+
+#myBar {
+    z-index: 2;
+    width: 0%;
+    height: 30px;
+    border-radius: 5%;
+    background-color: red;
+}
+
+.label {
+    width: 33%;
+    height: 30px;
+    float: left;
+    padding: 5px;
+}
+
+#labels {
+
+    height: 30px;
+    margin-top: 0px;
+
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
