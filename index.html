@@ -17,7 +17,7 @@
         <section class="timer"
                  x-bind:style="`--steps: ${steps}; --current-step: ${step}; --step-duration: ${duration.exercise}s`">
             <div class="timer__total">
-                Session: <span></span>
+                Session: <span x-text="totalTimeInSec"></span>
             </div>
             <div class="progress"
                  x-bind:class="stage">

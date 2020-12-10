@@ -8,7 +8,7 @@ const STATES = {
     STARTED: 300,
     PAUSED: 400,
     BETWEEN: 500,
-    FINISHED: 600,
+    FINISHED: 600
 };
 
 let timeline;
@@ -17,14 +17,14 @@ const secInMs = (time) => {
     return time * 1000;
 };
 
-const totalTime = (duration) => {
+const calcTotalTime = (duration) => {
     let loop = 0;
     exercises.forEach(element => {
         const exerciseDuration = secInMs(
-            duration.exercise * element.ratio.duration,
+            duration.exercise * element.ratio.duration
         );
         const pauseDuration = secInMs(
-            duration.between * element.ratio.pause,
+            duration.between * element.ratio.pause
         );
         loop += exerciseDuration + pauseDuration;
     });
@@ -41,11 +41,11 @@ const syncWithLocalStorage = (
     key,
     storage,
     watcher,
-    fallbackValue = null,
+    fallbackValue = null
 ) => {
     watcher(
         `${namespace}.${key}`,
-        (value) => localStorage.setItem(`${namespace}.${key}`, value),
+        (value) => localStorage.setItem(`${namespace}.${key}`, value)
     );
 
     const localStorageValue = localStorage.getItem(`${namespace}.${key}`);
@@ -70,14 +70,15 @@ const app = () => {
         state: STATES.SETTINGS,
         steps: exercises.length,
         step: 1,
+        totalTime: 1232131,
         duration: {
             buffer: 10,
             exercise: 30,
-            between: 4,
+            between: 4
         },
         sound: {
             start: '',
-            stop: '',
+            stop: ''
         },
         init (watcher) {
             for (const key in this.duration) {
@@ -93,7 +94,6 @@ const app = () => {
 
             watcher('sound.start', (value) => previewSound(value));
             watcher('sound.stop', (value) => previewSound(value));
-            this.printTime(totalTime(this.duration));
         },
         start () {
             this.step = 1;
@@ -122,7 +122,7 @@ const app = () => {
             const stopSound = new Audio(this.sound.stop);
 
             const pauseDuration = secInMs(
-                this.duration.between * this.exercise.ratio.pause,
+                this.duration.between * this.exercise.ratio.pause
             );
 
             timeline = setTimeout(() => {
@@ -131,7 +131,7 @@ const app = () => {
                 startSound.play();
 
                 const exerciseDuration = secInMs(
-                    this.duration.exercise * this.exercise.ratio.duration,
+                    this.duration.exercise * this.exercise.ratio.duration
                 );
 
                 timeline = setTimeout(() => {
@@ -153,11 +153,12 @@ const app = () => {
 
             return exercises[index];
         },
-        printTime (time) {
-            const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((time % (1000 * 60)) / 1000);
-            document.querySelector('.timer__total span').innerHTML = minutes +
-                'm ' + seconds + 's ';
+        get totalTimeInSec () {
+            const minutes = Math.floor(
+                (this.totalTime % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((this.totalTime % (1000 * 60)) / 1000);
+
+            return `${minutes}m ${seconds}s`;
         },
         get stage () {
             if (this.step < 19) {
@@ -169,7 +170,7 @@ const app = () => {
             }
 
             return 'floor';
-        },
+        }
     };
 };
 
