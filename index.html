@@ -13,7 +13,7 @@
      x-data="app()"
      x-init="() => { init($watch) }">
     <div class="timer">
-        Session Length: <span x-text="formattedSessionLength"></span>
+        Session: <span x-text="formattedSessionLength"></span>
     </div>
 
     <div class="progress"
@@ -149,10 +149,6 @@
                        x-bind:src="currentExercise.src"></video>
             </div>
 
-            <div class="exercise__info text-center text-medium">
-                <strong x-text="currentExercise.name"></strong>
-            </div>
-
             <div class="exercise__action horizontal-center-elements">
 
                 <button type="button" x-on:click.prevent="pause()">Pause</button>
@@ -175,7 +171,7 @@
 
     <template x-if="state === states.BETWEEN"
               key="state-between">
-        <section>
+        <section class="width-extended">
             <div class="text-center">
                 <span class="text-medium">Next exercise</span><br>
                 <strong class="text-big" x-text="currentExercise.name"></strong>

@@ -25,13 +25,17 @@ body {
 
 }
 
-.universe > section {
+section {
     width: 100%;
     max-width: 640px;
     margin-right: auto;
     margin-left: auto;
     position: relative;
     z-index: 3;
+}
+
+.width-extended {
+    max-width: 800px;
 }
 
 .text-center {
@@ -47,7 +51,7 @@ body {
 }
 
 .text-big {
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 [class*="horizontal"] {
