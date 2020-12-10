@@ -18,7 +18,8 @@ const secInMs = (time) => {
 };
 
 const calcTotalTime = (duration) => {
-    let loop = 0;
+    let totalTime = 0;
+
     exercises.forEach(element => {
         const exerciseDuration = secInMs(
             duration.exercise * element.ratio.duration
@@ -26,10 +27,10 @@ const calcTotalTime = (duration) => {
         const pauseDuration = secInMs(
             duration.between * element.ratio.pause
         );
-        loop += exerciseDuration + pauseDuration;
+        totalTime += exerciseDuration + pauseDuration;
     });
 
-    return duration.buffer + loop;
+    return totalTime + secInMs(duration.buffer);
 };
 
 const randomIntFromOneUntil = (max) => {
