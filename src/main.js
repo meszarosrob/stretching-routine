@@ -37,6 +37,22 @@ const randomIntFromOneUntil = (max) => {
     return Math.floor(Math.random() * (max - 1)) + 1;
 };
 
+const updateTotalTime = (
+    namespace,
+    key,
+    app,
+    watcher
+) => {
+    app.totalTime = calcTotalTime(app.duration);
+
+    watcher(
+        `${namespace}.${key}`,
+        () => {
+            app.totalTime = calcTotalTime(app.duration);
+        }
+    );
+};
+
 const syncWithLocalStorage = (
     namespace,
     key,
@@ -44,11 +60,6 @@ const syncWithLocalStorage = (
     watcher,
     fallbackValue = null
 ) => {
-    watcher(
-        `${namespace}.${key}`,
-        (value) => localStorage.setItem(`${namespace}.${key}`, value)
-    );
-
     const localStorageValue = localStorage.getItem(`${namespace}.${key}`);
 
     if (localStorageValue !== null) {
@@ -58,6 +69,13 @@ const syncWithLocalStorage = (
     if (localStorageValue === null && fallbackValue !== null) {
         storage[namespace][key] = fallbackValue;
     }
+
+    watcher(
+        `${namespace}.${key}`,
+        (value) => {
+            localStorage.setItem(`${namespace}.${key}`, value);
+        }
+    );
 };
 
 const previewSound = (src) => {
@@ -71,7 +89,7 @@ const app = () => {
         state: STATES.SETTINGS,
         steps: exercises.length,
         step: 1,
-        totalTime: 1232131,
+        totalTime: 0,
         duration: {
             buffer: 10,
             exercise: 30,
@@ -82,7 +100,10 @@ const app = () => {
             stop: ''
         },
         init (watcher) {
+            this.totalTime = calcTotalTime(this.duration);
+
             for (const key in this.duration) {
+                updateTotalTime('duration', key, this, watcher);
                 syncWithLocalStorage('duration', key, this, watcher);
             }
 
