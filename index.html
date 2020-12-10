@@ -13,13 +13,13 @@
 <div class="universe"
      x-data="app()"
      x-init="() => { init($watch) }">
-    <div style="">
-        <section id="timer" class=" ">
-            <div id="time"></div>
-            <div class="linear" id="linear">
-                <div class="prog" id="myBar"></div>
+    <div class="wrapper">
+        <section class="timer">
+            <div class="timer__total"></div>
+            <div class="progress">
+                <div class="progress__bar"></div>
             </div>
-            <div id="labels" class="clearfix">
+            <div class="labels">
                 <div class="label">Warmup</div>
                 <div class="label">Static</div>
                 <div class="label">Floor</div>
@@ -202,8 +202,6 @@
             </section>
         </template>
     </div>
-
-
 </div>
 
 <script src="src/main.js"></script>

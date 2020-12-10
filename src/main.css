@@ -78,48 +78,26 @@ details p {
     margin-top: 1em;
 }
 
-#timer {
-
+.timer__total {
+    margin-bottom: .5rem;
 }
 
-#time {
-    height: 30px;
-}
-
-#linear {
-    height: 30px;
-
+.progress {
+    height: 2rem;
     background-color: #dde6f0;
-    border-radius: 5%;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-    padding: 0;
-    z-index: 1;
 }
 
-#myBar {
-    z-index: 2;
-    width: 0%;
-    height: 30px;
-    border-radius: 5%;
+.progress__bar {
+    width: 0;
+    height: 2rem;
     background-color: red;
 }
 
+.labels {
+    display: flex;
+    margin-top: .5rem
+}
+
 .label {
-    width: 33%;
-    height: 30px;
-    float: left;
-    padding: 5px;
-}
-
-#labels {
-
-    height: 30px;
-    margin-top: 0px;
-
-}
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
+    width: 33.33%;
 }

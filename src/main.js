@@ -156,10 +156,10 @@ const app = () => {
         printTime (time) {
             const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((time % (1000 * 60)) / 1000);
-            document.getElementById('time').innerHTML = 'Session: ' + minutes + 'm ' + seconds + 's ';
+            document.querySelector('.timer__total').innerHTML = 'Session: ' + minutes + 'm ' + seconds + 's ';
         },
         move () {
-            const elem = document.getElementById('myBar');
+            const elem = document.querySelector('.progress__bar');
             let width = 0;
             const id = setInterval(frame, 1000);
             const sessionLenghtNormalized = (100 / (totalTime(this.duration) / 1000));
