@@ -15,7 +15,7 @@
      x-init="() => { init($watch) }">
     <div class="wrapper">
         <section class="timer"
-                 x-bind:style="`--steps: ${steps}; --current-step: ${step}; --step-duration: ${duration.exercise}s`">
+                 x-bind:style="`--steps: ${steps}; --current-step: ${step}; --step-duration: ${animationDuration}s`">
             <div class="timer__total">
                 Session: <span x-text="totalTimeInSec"></span>
             </div>

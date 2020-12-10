@@ -192,6 +192,9 @@ const app = () => {
             }
 
             return 'floor';
+        },
+        get animationDuration () {
+            return this.duration.exercise * this.exercise.ratio.duration;
         }
     };
 };
