@@ -156,7 +156,7 @@ const app = () => {
         printTime (time) {
             const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((time % (1000 * 60)) / 1000);
-            document.querySelector('.timer__total').innerHTML = 'Session: ' + minutes + 'm ' + seconds + 's ';
+            document.querySelector('.timer__total span').innerHTML = minutes + 'm ' + seconds + 's ';
         },
         move () {
             const elem = document.querySelector('.progress__bar');
