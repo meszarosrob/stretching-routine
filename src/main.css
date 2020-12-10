@@ -25,12 +25,13 @@ body {
 
 }
 
-.universe > * {
+.universe > section {
     width: 100%;
     max-width: 640px;
     margin-right: auto;
     margin-left: auto;
-
+    position: relative;
+    z-index: 3;
 }
 
 .text-center {
@@ -79,28 +80,24 @@ details p {
 }
 
 .timer {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 2;
+}
+
+.progress {
     --step-total: 1;
     --step-current: 1;
     --step-duration: 1s;
     --step-width: calc(100% / var(--step-total));
     --step-completed-width: calc(var(--step-width) * (var(--step-current) - 1));
-    position: fixed;
+    --progress-color: #dde6f0;
+    position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
-    padding: 1rem;
-}
-
-.timer__total {
-    margin-bottom: .5rem;
-}
-
-.progress {
-    --bg-color: #dde6f0;
-    --progress-color: #dde6f0;
-    height: 2rem;
-    background: var(--bg-color);
-    position: relative;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -117,7 +114,8 @@ details p {
 }
 
 .progress__past,
-.progress__now {
+.progress__now,
+.progress__finished {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -129,10 +127,14 @@ details p {
     background: var(--progress-color);
 }
 
-.progress__now {
+.progress__now,
+.progress__finished {
     left: var(--step-completed-width);
     width: var(--step-width);
     background: var(--progress-color);
+}
+
+.progress__now {
     animation-name: progress;
     animation-duration: var(--step-duration);
     animation-iteration-count: infinite;

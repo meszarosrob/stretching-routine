@@ -12,189 +12,183 @@
 <div class="universe"
      x-data="app()"
      x-init="() => { init($watch) }">
-    <div class="wrapper">
-        <section class="timer"
-                 x-bind:style="`--step-total: ${step.total}; --step-current: ${step.current}; --step-duration: ${animationDuration}s`">
-            <div class="timer__total">
-                Session Length: <span x-text="formattedSessionLength"></span>
-            </div>
+    <div class="timer">
+        Session Length: <span x-text="formattedSessionLength"></span>
+    </div>
 
-            <div class="progress"
-                 x-bind:class="stage">
-                <div class="progress__past"></div>
+    <div class="progress"
+         x-bind:style="`--step-total: ${step.total}; --step-current: ${step.current}; --step-duration: ${animationDuration}s`"
+         x-bind:class="stage">
+        <div class="progress__past"></div>
 
-                <template x-if="state === states.STARTED">
-                    <div class="progress__now"></div>
-                </template>
-            </div>
-
-            <div class="stages">
-                <div class="warmup text-small">Warmup</div>
-                <div class="standing text-small">Standing</div>
-                <div class="floor text-small">Floor</div>
-            </div>
-        </section>
-
-        <section class="settings vertical-stack"
-                 x-show="state === states.SETTINGS">
-            <div class="control">
-                <label class="horizontal-stack">
-                    <span>The length of an exercise is</span>
-                    <input min="15"
-                           max="60"
-                           step="5"
-                           type="number"
-                           x-model.number="duration.exercise">
-                    <span>seconds.</span>
-                </label>
-            </div>
-
-            <div class="control">
-                <label class="horizontal-stack">
-                    <span>Pause</span>
-                    <input type="number"
-                           min="3"
-                           max="10"
-                           step="1"
-                           x-model.number="duration.between">
-                    <span>seconds between exercises.</span>
-                </label>
-            </div>
-
-            <div class="control">
-                <label class="horizontal-stack">
-                    <input min="3"
-                           step="1"
-                           type="number"
-                           x-model.number="duration.buffer">
-                    <span>seconds are needed before the exercises.</span>
-                </label>
-            </div>
-
-            <div class="control">
-                <label class="horizontal-stack">
-                    <span>Play</span>
-                    <select x-model="sound.start">
-                        <option disabled selected>Select sound</option>
-                        <template x-for="(item, index) in sounds"
-                                  x-bind:key="'sound-start-' + index">
-                            <option x-bind:value="item.src"
-                                    x-text="item.name"></option>
-                        </template>
-                    </select>
-                    <span>when the exercise starts.</span>
-                </label>
-            </div>
-
-            <div class="control">
-                <label class="horizontal-stack">
-                    <span>When exercise ends, play</span>
-                    <select x-model="sound.stop">
-                        <option disabled selected>Select sound</option>
-                        <template x-for="(item, index) in sounds"
-                                  x-bind:key="'sound-stop-' + index">
-                            <option x-bind:value="item.src"
-                                    x-text="item.name"></option>
-                        </template>
-                    </select>
-                    <span>.</span>
-                </label>
-            </div>
-
-            <button type="button" x-on:click.prevent="start()">Start</button>
-
-            <div>&nbsp;</div>
-
-            <div class="text-small">
-                <details>
-                    <summary>Wait a moment! WTF is this?</summary>
-
-                    <p>
-                        In an attempt to break my sedentary lifestyle, I challenged myself for 30 days stretching
-                        routine. Halfway through, while I could not do it entirely unaided, I needed less instruction.
-                        Nevertheless, this gave me the freedom to catch up with some podcasts. But it turns out it's not
-                        that easy to remain in sync with an instructional video that is playing on mute while you are on
-                        the floor and listening about atomic tattoos. This led to the idea of having sound signals at
-                        the beginning and end of an exercise, then the rest followed.
-                    </p>
-
-                    <p>
-                        Based on
-                        <a href="https://www.thegreatcoursesplus.com/physiology-and-fitness">Physiology and Fitness</a>
-                        course (episode 36).
-                    </p>
-
-                    <p>
-                        Misc: You should keep the browser tab active during the stretch, and don't be surprised if the
-                        sound does not play in a mobile browser.
-                    </p>
-                </details>
-            </div>
-
-        </section>
-
-        <template x-if="state === states.BUFFER"
-                  key="state-buffer">
-            <section>
-                <div class="text-big text-center">Get ready...</div>
-            </section>
+        <template x-if="state === states.STARTED">
+            <div class="progress__now"></div>
         </template>
 
-        <template x-if="state === states.STARTED"
-                  key="state-started">
-
-            <section class="exercise vertical-stack">
-                <div class="exercise__preview">
-                    <video width="640"
-                           height="480"
-                           autoplay
-                           muted
-                           loop
-                           playsinline
-                           x-bind:src="currentExercise.src"></video>
-                </div>
-
-                <div class="exercise__info text-center text-medium">
-                    <strong x-text="currentExercise.name"></strong>
-                </div>
-
-                <div class="exercise__action horizontal-center-elements">
-
-                    <button type="button" x-on:click.prevent="pause()">Pause</button>
-
-                </div>
-
-            </section>
-
-        </template>
-
-        <template x-if="state === states.PAUSED"
-                  key="state-paused">
-            <section>
-                <div class="horizontal-stack horizontal-center-elements">
-                    <button type="button" x-on:click.prevent="resume()">Resume</button>
-                    <div>from <span x-text="currentExercise.name"></span></div>
-                </div>
-            </section>
-        </template>
-
-        <template x-if="state === states.BETWEEN"
-                  key="state-between">
-            <section>
-                <div class="text-center">
-                    <span class="text-medium">Next exercise</span><br>
-                    <strong class="text-big" x-text="currentExercise.name"></strong>
-                </div>
-            </section>
-        </template>
-
-        <template x-if="state === states.FINISHED"
-                  key="state-finished">
-            <section>
-                <div class="text-big text-center">...aaaaaaaaaaaaand done!</div>
-            </section>
+        <template x-if="state === states.FINISHED">
+            <div class="progress__finished"></div>
         </template>
     </div>
+
+    <section class="settings vertical-stack"
+             x-show="state === states.SETTINGS">
+        <div class="control">
+            <label class="horizontal-stack">
+                <span>The length of an exercise is</span>
+                <input min="15"
+                       max="60"
+                       step="5"
+                       type="number"
+                       x-model.number="duration.exercise">
+                <span>seconds.</span>
+            </label>
+        </div>
+
+        <div class="control">
+            <label class="horizontal-stack">
+                <span>Pause</span>
+                <input type="number"
+                       min="3"
+                       max="10"
+                       step="1"
+                       x-model.number="duration.between">
+                <span>seconds between exercises.</span>
+            </label>
+        </div>
+
+        <div class="control">
+            <label class="horizontal-stack">
+                <input min="3"
+                       step="1"
+                       type="number"
+                       x-model.number="duration.buffer">
+                <span>seconds are needed before the exercises.</span>
+            </label>
+        </div>
+
+        <div class="control">
+            <label class="horizontal-stack">
+                <span>Play</span>
+                <select x-model="sound.start">
+                    <option disabled selected>Select sound</option>
+                    <template x-for="(item, index) in sounds"
+                              x-bind:key="'sound-start-' + index">
+                        <option x-bind:value="item.src"
+                                x-text="item.name"></option>
+                    </template>
+                </select>
+                <span>when the exercise starts.</span>
+            </label>
+        </div>
+
+        <div class="control">
+            <label class="horizontal-stack">
+                <span>When exercise ends, play</span>
+                <select x-model="sound.stop">
+                    <option disabled selected>Select sound</option>
+                    <template x-for="(item, index) in sounds"
+                              x-bind:key="'sound-stop-' + index">
+                        <option x-bind:value="item.src"
+                                x-text="item.name"></option>
+                    </template>
+                </select>
+                <span>.</span>
+            </label>
+        </div>
+
+        <button type="button" x-on:click.prevent="start()">Start</button>
+
+        <div>&nbsp;</div>
+
+        <div class="text-small">
+            <details>
+                <summary>Wait a moment! WTF is this?</summary>
+
+                <p>
+                    In an attempt to break my sedentary lifestyle, I challenged myself for 30 days stretching
+                    routine. Halfway through, while I could not do it entirely unaided, I needed less instruction.
+                    Nevertheless, this gave me the freedom to catch up with some podcasts. But it turns out it's not
+                    that easy to remain in sync with an instructional video that is playing on mute while you are on
+                    the floor and listening about atomic tattoos. This led to the idea of having sound signals at
+                    the beginning and end of an exercise, then the rest followed.
+                </p>
+
+                <p>
+                    Based on
+                    <a href="https://www.thegreatcoursesplus.com/physiology-and-fitness">Physiology and Fitness</a>
+                    course (episode 36).
+                </p>
+
+                <p>
+                    Misc: You should keep the browser tab active during the stretch, and don't be surprised if the
+                    sound does not play in a mobile browser.
+                </p>
+            </details>
+        </div>
+
+    </section>
+
+    <template x-if="state === states.BUFFER"
+              key="state-buffer">
+        <section>
+            <div class="text-big text-center">Get ready...</div>
+        </section>
+    </template>
+
+    <template x-if="state === states.STARTED"
+              key="state-started">
+
+        <section class="exercise vertical-stack">
+            <div class="exercise__preview">
+                <video width="640"
+                       height="480"
+                       autoplay
+                       muted
+                       loop
+                       playsinline
+                       x-bind:src="currentExercise.src"></video>
+            </div>
+
+            <div class="exercise__info text-center text-medium">
+                <strong x-text="currentExercise.name"></strong>
+            </div>
+
+            <div class="exercise__action horizontal-center-elements">
+
+                <button type="button" x-on:click.prevent="pause()">Pause</button>
+
+            </div>
+
+        </section>
+
+    </template>
+
+    <template x-if="state === states.PAUSED"
+              key="state-paused">
+        <section>
+            <div class="horizontal-stack horizontal-center-elements">
+                <button type="button" x-on:click.prevent="resume()">Resume</button>
+                <div>from <span x-text="currentExercise.name"></span></div>
+            </div>
+        </section>
+    </template>
+
+    <template x-if="state === states.BETWEEN"
+              key="state-between">
+        <section>
+            <div class="text-center">
+                <span class="text-medium">Next exercise</span><br>
+                <strong class="text-big" x-text="currentExercise.name"></strong>
+            </div>
+        </section>
+    </template>
+
+    <template x-if="state === states.FINISHED"
+              key="state-finished">
+        <section>
+            <div class="text-big text-center">...aaaaaaaaaaaaand done!</div>
+        </section>
+    </template>
 </div>
 
 <script src="src/main.js"></script>
