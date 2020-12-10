@@ -175,10 +175,13 @@ const app = () => {
 
             return exercises[index];
         },
-        get totalTimeInSec () {
-            const minutes = Math.floor(
-                (this.totalTime % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((this.totalTime % (1000 * 60)) / 1000);
+        get totalTimeAsMinutes () {
+            const oneSecond = secInMs(1);
+            const oneMinute = secInMs(60);
+            const oneHour = 60 * oneMinute;
+
+            const minutes = Math.floor((this.totalTime % oneHour) / oneMinute);
+            const seconds = Math.floor((this.totalTime % oneMinute) / oneSecond);
 
             return `${minutes}m ${seconds}s`;
         },
