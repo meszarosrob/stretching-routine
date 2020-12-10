@@ -78,19 +78,64 @@ details p {
     margin-top: 1em;
 }
 
+.timer {
+    --steps: 1;
+    --current-step: 1;
+    --step-width: calc(100% / var(--steps));
+    --step-past: calc(var(--step-width) * (var(--current-step) - 1));
+    --step-duration: 1s;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 1rem;
+}
+
 .timer__total {
     margin-bottom: .5rem;
 }
 
 .progress {
+    --bg-color: #dde6f0;
+    --progress-color: #dde6f0;
     height: 2rem;
-    background-color: #dde6f0;
+    background: var(--bg-color);
+    position: relative;
+    overflow: hidden;
 }
 
-.progress__bar {
-    width: 0;
-    height: 2rem;
-    background-color: red;
+.progress.warmup {
+    --progress-color: #ff9071;
+}
+
+.progress.standing {
+    --progress-color: #ffdc7c;
+}
+
+.progress.floor {
+    --progress-color: #6ba292;
+}
+
+.progress__past,
+.progress__now {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+.progress__past {
+    left: 0;
+    width: var(--step-past);
+    background: var(--progress-color);
+}
+
+.progress__now {
+    left: var(--step-past);
+    width: var(--step-width);
+    background: var(--progress-color);
+    animation-name: progress;
+    animation-duration: var(--step-duration);
+    animation-iteration-count: infinite;
 }
 
 .labels {
@@ -98,6 +143,24 @@ details p {
     margin-top: .5rem
 }
 
-.label {
-    width: 33.33%;
+.labels .warmup {
+    width: 35.29%;
+}
+
+.labels .standing {
+    width: 43.13%;
+}
+
+.labels .floor {
+    width: 21.56%;
+}
+
+@keyframes progress {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: var(--step-width);
+    }
 }

@@ -14,17 +14,22 @@
      x-data="app()"
      x-init="() => { init($watch) }">
     <div class="wrapper">
-        <section class="timer">
+        <section class="timer"
+                 x-bind:style="`--steps: ${steps}; --current-step: ${step}; --step-duration: ${duration.exercise}s`">
             <div class="timer__total">
                 Session: <span></span>
             </div>
-            <div class="progress">
-                <div class="progress__bar"></div>
+            <div class="progress"
+                 x-bind:class="stage">
+                <div class="progress__past"></div>
+                <template x-if="state === states.STARTED">
+                    <div class="progress__now"></div>
+                </template>
             </div>
             <div class="labels">
-                <div class="label">Warmup</div>
-                <div class="label">Static</div>
-                <div class="label">Floor</div>
+                <div class="warmup">Warmup</div>
+                <div class="standing">Standing</div>
+                <div class="floor">Floor</div>
             </div>
         </section>
 

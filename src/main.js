@@ -8,7 +8,7 @@ const STATES = {
     STARTED: 300,
     PAUSED: 400,
     BETWEEN: 500,
-    FINISHED: 600
+    FINISHED: 600,
 };
 
 let timeline;
@@ -21,10 +21,10 @@ const totalTime = (duration) => {
     let loop = 0;
     exercises.forEach(element => {
         const exerciseDuration = secInMs(
-            duration.exercise * element.ratio.duration
+            duration.exercise * element.ratio.duration,
         );
         const pauseDuration = secInMs(
-            duration.between * element.ratio.pause
+            duration.between * element.ratio.pause,
         );
         loop += exerciseDuration + pauseDuration;
     });
@@ -41,11 +41,11 @@ const syncWithLocalStorage = (
     key,
     storage,
     watcher,
-    fallbackValue = null
+    fallbackValue = null,
 ) => {
     watcher(
         `${namespace}.${key}`,
-        (value) => localStorage.setItem(`${namespace}.${key}`, value)
+        (value) => localStorage.setItem(`${namespace}.${key}`, value),
     );
 
     const localStorageValue = localStorage.getItem(`${namespace}.${key}`);
@@ -68,15 +68,16 @@ const previewSound = (src) => {
 const app = () => {
     return {
         state: STATES.SETTINGS,
+        steps: exercises.length,
         step: 1,
         duration: {
             buffer: 10,
             exercise: 30,
-            between: 4
+            between: 4,
         },
         sound: {
             start: '',
-            stop: ''
+            stop: '',
         },
         init (watcher) {
             for (const key in this.duration) {
@@ -98,7 +99,6 @@ const app = () => {
             this.step = 1;
 
             this.waitToStartExercise();
-            this.move();
         },
         resume () {
             this.waitToStartExercise();
@@ -122,7 +122,7 @@ const app = () => {
             const stopSound = new Audio(this.sound.stop);
 
             const pauseDuration = secInMs(
-                this.duration.between * this.exercise.ratio.pause
+                this.duration.between * this.exercise.ratio.pause,
             );
 
             timeline = setTimeout(() => {
@@ -131,7 +131,7 @@ const app = () => {
                 startSound.play();
 
                 const exerciseDuration = secInMs(
-                    this.duration.exercise * this.exercise.ratio.duration
+                    this.duration.exercise * this.exercise.ratio.duration,
                 );
 
                 timeline = setTimeout(() => {
@@ -156,31 +156,20 @@ const app = () => {
         printTime (time) {
             const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((time % (1000 * 60)) / 1000);
-            document.querySelector('.timer__total span').innerHTML = minutes + 'm ' + seconds + 's ';
+            document.querySelector('.timer__total span').innerHTML = minutes +
+                'm ' + seconds + 's ';
         },
-        move () {
-            const elem = document.querySelector('.progress__bar');
-            let width = 0;
-            const id = setInterval(frame, 1000);
-            const sessionLenghtNormalized = (100 / (totalTime(this.duration) / 1000));
-            function frame () {
-                if (width >= 100) {
-                    clearInterval(id);
-                } else {
-                    width = width + sessionLenghtNormalized;
-                    if (width > 33 && width < 66) {
-                        elem.style.width = width + '%';
-                        elem.style['background-color'] = '#ffdc7c';
-                    } else if (width >= 66) {
-                        elem.style.width = width + '%';
-                        elem.style['background-color'] = '#6ba292';
-                    } else {
-                        elem.style.width = width + '%';
-                        elem.style['background-color'] = '#ff9071';
-                    }
-                }
+        get stage () {
+            if (this.step < 19) {
+                return 'warmup';
             }
-        }
+
+            if (this.step >= 19 && this.step < 41) {
+                return 'standing';
+            }
+
+            return 'floor';
+        },
     };
 };
 
