@@ -1,6 +1,7 @@
 import 'alpinejs';
 import exercises from './exercises.json';
 import sounds from './sounds.json';
+import { msToMinAndSec, randomIntFromOneUntil, secToMs } from './helpers';
 
 const STATES = {
     SETTINGS: 100,
@@ -13,42 +14,31 @@ const STATES = {
 
 let timeline;
 
-const secInMs = (time) => {
-    return time * 1000;
-};
+const calculateSessionLength = (duration) => {
+    let totalDuration = 0;
 
-const calcTotalTime = (duration) => {
-    let totalTime = 0;
+    exercises.forEach(({ ratio }) => {
+        const exerciseDuration = parseInt(duration.exercise) * ratio.exercise;
+        const betweenDuration = parseInt(duration.between) * ratio.between;
 
-    exercises.forEach(element => {
-        const exerciseDuration = secInMs(
-            duration.exercise * element.ratio.duration
-        );
-        const pauseDuration = secInMs(
-            duration.between * element.ratio.pause
-        );
-        totalTime += exerciseDuration + pauseDuration;
+        totalDuration = totalDuration + exerciseDuration + betweenDuration;
     });
 
-    return totalTime + secInMs(duration.buffer);
+    return totalDuration + parseInt(duration.buffer);
 };
 
-const randomIntFromOneUntil = (max) => {
-    return Math.floor(Math.random() * (max - 1)) + 1;
-};
-
-const updateTotalTime = (
+const syncDurationTotal = (
     namespace,
     key,
     app,
     watcher
 ) => {
-    app.totalTime = calcTotalTime(app.duration);
+    app.durationTotal = calculateSessionLength(app.duration);
 
     watcher(
         `${namespace}.${key}`,
         () => {
-            app.totalTime = calcTotalTime(app.duration);
+            app.durationTotal = calculateSessionLength(app.duration);
         }
     );
 };
@@ -78,7 +68,7 @@ const syncWithLocalStorage = (
     );
 };
 
-const previewSound = (src) => {
+const playSound = (src) => {
     const sound = new Audio(src);
 
     sound.play();
@@ -87,24 +77,58 @@ const previewSound = (src) => {
 const app = () => {
     return {
         state: STATES.SETTINGS,
-        steps: exercises.length,
-        step: 1,
-        totalTime: 0,
+        step: {
+            current: 1,
+            total: exercises.length
+        },
         duration: {
             buffer: 10,
             exercise: 30,
             between: 4
         },
+        durationTotal: 0,
         sound: {
             start: '',
             stop: ''
         },
-        init (watcher) {
-            this.totalTime = calcTotalTime(this.duration);
+        get currentExercise () {
+            const index = this.step.current - 1;
 
+            return exercises[index];
+        },
+        get currentStepDuration () {
+            const duration = this.duration;
+            const currentExerciseRation = this.currentExercise.ratio;
+
+            return {
+                exercise: duration.exercise * currentExerciseRation.exercise,
+                between: duration.between * currentExerciseRation.between
+            };
+        },
+        get formattedSessionLength () {
+            const durationTotalInMs = secToMs(this.durationTotal);
+            const [minutes, seconds] = msToMinAndSec(durationTotalInMs);
+
+            return `${minutes}m ${seconds}s`;
+        },
+        get stage () {
+            if (this.step.current < 19) {
+                return 'warmup';
+            }
+
+            if (this.step.current < 41) {
+                return 'standing';
+            }
+
+            return 'floor';
+        },
+        get animationDuration () {
+            return this.duration.exercise * this.currentStepDuration.exercise;
+        },
+        init (watcher) {
             for (const key in this.duration) {
-                updateTotalTime('duration', key, this, watcher);
                 syncWithLocalStorage('duration', key, this, watcher);
+                syncDurationTotal('duration', key, this, watcher);
             }
 
             for (const key in this.sound) {
@@ -114,90 +138,53 @@ const app = () => {
                 syncWithLocalStorage('sound', key, this, watcher, soundSrc);
             }
 
-            watcher('sound.start', (value) => previewSound(value));
-            watcher('sound.stop', (value) => previewSound(value));
+            watcher('sound.start', (filePath) => playSound(filePath));
+            watcher('sound.stop', (value) => playSound(value));
         },
         start () {
-            this.step = 1;
+            this.step.current = 1;
 
-            this.waitToStartExercise();
+            this.bufferNextStep();
         },
         resume () {
-            this.waitToStartExercise();
+            this.bufferNextStep();
         },
         pause () {
-            clearTimeout(timeline);
-
             this.state = STATES.PAUSED;
+
+            clearTimeout(timeline);
         },
-        waitToStartExercise () {
+        bufferNextStep () {
             this.state = STATES.BUFFER;
 
             setTimeout(() => {
-                this.transitionToNextExercise();
-            }, secInMs(this.duration.buffer));
+                this.transitionToNextStep();
+            }, secToMs(this.duration.buffer));
         },
-        transitionToNextExercise () {
+        transitionToNextStep () {
             this.state = STATES.BETWEEN;
 
             const startSound = new Audio(this.sound.start);
             const stopSound = new Audio(this.sound.stop);
-
-            const pauseDuration = secInMs(
-                this.duration.between * this.exercise.ratio.pause
-            );
 
             timeline = setTimeout(() => {
                 this.state = STATES.STARTED;
 
                 startSound.play();
 
-                const exerciseDuration = secInMs(
-                    this.duration.exercise * this.exercise.ratio.duration
-                );
-
                 timeline = setTimeout(() => {
                     stopSound.play();
 
-                    if (this.step === exercises.length) {
+                    if (this.step.current === this.step.total) {
                         this.state = STATES.FINISHED;
                         return;
                     }
 
-                    this.step = this.step + 1;
+                    this.step.current = this.step.current + 1;
 
-                    this.transitionToNextExercise();
-                }, exerciseDuration);
-            }, pauseDuration);
-        },
-        get exercise () {
-            const index = this.step - 1;
-
-            return exercises[index];
-        },
-        get totalTimeAsMinutes () {
-            const oneSecond = secInMs(1);
-            const oneMinute = secInMs(60);
-            const oneHour = 60 * oneMinute;
-
-            const minutes = Math.floor((this.totalTime % oneHour) / oneMinute);
-            const seconds = Math.floor((this.totalTime % oneMinute) / oneSecond);
-
-            return `${minutes}m ${seconds}s`;
-        },
-        get stage () {
-            if (this.step < 19) {
-                return 'warmup';
-            }
-
-            if (this.step >= 19 && this.step < 41) {
-                return 'standing';
-            }
-
-            return 'floor';
-        },
-        get animationDuration () {
-            return this.duration.exercise * this.exercise.ratio.duration;
+                    this.transitionToNextStep();
+                }, secToMs(this.currentStepDuration.exercise));
+            }, secToMs(this.currentStepDuration.between));
         }
     };
 };

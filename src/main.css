@@ -79,11 +79,11 @@ details p {
 }
 
 .timer {
-    --steps: 1;
-    --current-step: 1;
-    --step-width: calc(100% / var(--steps));
-    --step-past: calc(var(--step-width) * (var(--current-step) - 1));
+    --step-total: 1;
+    --step-current: 1;
     --step-duration: 1s;
+    --step-width: calc(100% / var(--step-total));
+    --step-completed-width: calc(var(--step-width) * (var(--step-current) - 1));
     position: fixed;
     left: 0;
     top: 0;
@@ -125,34 +125,17 @@ details p {
 
 .progress__past {
     left: 0;
-    width: var(--step-past);
+    width: var(--step-completed-width);
     background: var(--progress-color);
 }
 
 .progress__now {
-    left: var(--step-past);
+    left: var(--step-completed-width);
     width: var(--step-width);
     background: var(--progress-color);
     animation-name: progress;
     animation-duration: var(--step-duration);
     animation-iteration-count: infinite;
-}
-
-.labels {
-    display: flex;
-    margin-top: .5rem
-}
-
-.labels .warmup {
-    width: 35.29%;
-}
-
-.labels .standing {
-    width: 43.13%;
-}
-
-.labels .floor {
-    width: 21.56%;
 }
 
 @keyframes progress {
@@ -163,4 +146,21 @@ details p {
     100% {
         width: var(--step-width);
     }
+}
+
+.stages {
+    display: flex;
+    margin-top: .5rem
+}
+
+.stages .warmup {
+    width: 35.29%; /* 18 of 51 */
+}
+
+.stages .standing {
+    width: 43.13%; /* 22 of 51 */
+}
+
+.stages .floor {
+    width: 21.56%; /* 11 of 51 */
 }

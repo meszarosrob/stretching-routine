@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Stretching Routine</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link href="src/main.css" rel="stylesheet">
 </head>
 <body>
@@ -15,21 +14,24 @@
      x-init="() => { init($watch) }">
     <div class="wrapper">
         <section class="timer"
-                 x-bind:style="`--steps: ${steps}; --current-step: ${step}; --step-duration: ${animationDuration}s`">
+                 x-bind:style="`--step-total: ${step.total}; --step-current: ${step.current}; --step-duration: ${animationDuration}s`">
             <div class="timer__total">
-                Session: <span x-text="totalTimeAsMinutes"></span>
+                Session Length: <span x-text="formattedSessionLength"></span>
             </div>
+
             <div class="progress"
                  x-bind:class="stage">
                 <div class="progress__past"></div>
+
                 <template x-if="state === states.STARTED">
                     <div class="progress__now"></div>
                 </template>
             </div>
-            <div class="labels">
-                <div class="warmup">Warmup</div>
-                <div class="standing">Standing</div>
-                <div class="floor">Floor</div>
+
+            <div class="stages">
+                <div class="warmup text-small">Warmup</div>
+                <div class="standing text-small">Standing</div>
+                <div class="floor text-small">Floor</div>
             </div>
         </section>
 
@@ -99,10 +101,7 @@
                 </label>
             </div>
 
-            <button type="button"
-                    x-on:click.prevent="start()">
-                Start
-            </button>
+            <button type="button" x-on:click.prevent="start()">Start</button>
 
             <div>&nbsp;</div>
 
@@ -111,30 +110,23 @@
                     <summary>Wait a moment! WTF is this?</summary>
 
                     <p>
-                        In an attempt to break my sedentary lifestyle, I challenged myself for 30
-                        days stretching routine.
-                        Halfway through, while I could not do it entirely unaided, I needed less
-                        instruction. Nevertheless,
-                        this gave me the freedom to catch up with some podcasts. But it turns out
-                        it's not that easy to
-                        remain in sync with an instructional video that is playing on mute while you
-                        are on the floor and
-                        listening about atomic tattoos. This led to the idea of having sound signals
-                        at the beginning and
-                        end of an exercise, then the rest followed.
+                        In an attempt to break my sedentary lifestyle, I challenged myself for 30 days stretching
+                        routine. Halfway through, while I could not do it entirely unaided, I needed less instruction.
+                        Nevertheless, this gave me the freedom to catch up with some podcasts. But it turns out it's not
+                        that easy to remain in sync with an instructional video that is playing on mute while you are on
+                        the floor and listening about atomic tattoos. This led to the idea of having sound signals at
+                        the beginning and end of an exercise, then the rest followed.
                     </p>
 
                     <p>
                         Based on
-                        <a href="https://www.thegreatcoursesplus.com/physiology-and-fitness">Physiology
-                            and Fitness</a>
+                        <a href="https://www.thegreatcoursesplus.com/physiology-and-fitness">Physiology and Fitness</a>
                         course (episode 36).
                     </p>
 
                     <p>
-                        Misc: You should keep the browser tab active during the stretch, and don't
-                        be surprised if the sound
-                        does not play in a mobile browser.
+                        Misc: You should keep the browser tab active during the stretch, and don't be surprised if the
+                        sound does not play in a mobile browser.
                     </p>
                 </details>
             </div>
@@ -159,19 +151,16 @@
                            muted
                            loop
                            playsinline
-                           x-bind:src="exercise.src"></video>
+                           x-bind:src="currentExercise.src"></video>
                 </div>
 
                 <div class="exercise__info text-center text-medium">
-                    <strong x-text="exercise.name"></strong>
+                    <strong x-text="currentExercise.name"></strong>
                 </div>
 
                 <div class="exercise__action horizontal-center-elements">
 
-                    <button type="button"
-                            x-on:click.prevent="pause()">
-                        Pause
-                    </button>
+                    <button type="button" x-on:click.prevent="pause()">Pause</button>
 
                 </div>
 
@@ -183,11 +172,8 @@
                   key="state-paused">
             <section>
                 <div class="horizontal-stack horizontal-center-elements">
-                    <button type="button"
-                            x-on:click.prevent="resume()">
-                        Resume
-                    </button>
-                    <div>from <span x-text="exercise.name"></span></div>
+                    <button type="button" x-on:click.prevent="resume()">Resume</button>
+                    <div>from <span x-text="currentExercise.name"></span></div>
                 </div>
             </section>
         </template>
@@ -197,7 +183,7 @@
             <section>
                 <div class="text-center">
                     <span class="text-medium">Next exercise</span><br>
-                    <strong class="text-big" x-text="exercise.name"></strong>
+                    <strong class="text-big" x-text="currentExercise.name"></strong>
                 </div>
             </section>
         </template>
