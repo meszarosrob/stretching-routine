@@ -21,13 +21,11 @@
          x-bind:class="stage">
         <div class="progress__past"></div>
 
-        <template x-if="state === states.STARTED">
-            <div class="progress__now"></div>
-        </template>
+        <div class="progress__now"
+             x-show="state === states.STARTED"></div>
 
-        <template x-if="state === states.FINISHED">
-            <div class="progress__finished"></div>
-        </template>
+        <div class="progress__finished"
+             x-show="state === states.FINISHED"></div>
     </div>
 
     <section class="settings vertical-stack"
