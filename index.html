@@ -17,7 +17,7 @@
     </div>
 
     <div class="progress"
-         x-bind:style="`--step-total: ${step.total}; --step-current: ${step.current}; --step-duration: ${animationDuration}s`"
+         x-bind:style="`--step-total: ${step.total}; --step-current: ${step.current}; --step-duration: ${currentStepDuration.exercise}s`"
          x-bind:class="stage">
         <div class="progress__past"></div>
 

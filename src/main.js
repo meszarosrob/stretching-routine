@@ -122,9 +122,6 @@ const app = () => {
 
             return 'floor';
         },
-        get animationDuration () {
-            return this.duration.exercise * this.currentStepDuration.exercise;
-        },
         init (watcher) {
             for (const key in this.duration) {
                 syncWithLocalStorage('duration', key, this, watcher);
