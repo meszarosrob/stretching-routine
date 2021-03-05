@@ -14,7 +14,11 @@
         "eslint-plugin-standard": "^4.1.0",
         "parcel-bundler": "^1.12.4"
     },
+    "resolutions": {
+        "node-forge": "^0.10.0"
+    },
     "scripts": {
+        "preinstall": "npx npm-force-resolutions",
         "serve": "npm run copy-static-assets && parcel index.html",
         "build": "npm run copy-static-assets && parcel build index.html",
         "lint": "eslint 'src/**/*.{js,ts,tsx}'",
