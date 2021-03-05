@@ -3,22 +3,23 @@
     "description": "Stretching routine with duration settings and sound signaling",
     "main": "src/main.js",
     "dependencies": {
-        "alpinejs": "^2.7.3"
+        "alpinejs": "^2.8.1"
     },
     "devDependencies": {
-        "eslint": "^7.14.0",
+        "eslint": "^7.21.0",
         "eslint-config-standard": "^16.0.2",
         "eslint-plugin-import": "^2.22.1",
         "eslint-plugin-node": "^11.1.0",
-        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-promise": "^4.3.1",
         "eslint-plugin-standard": "^4.1.0",
         "parcel-bundler": "^1.12.4"
     },
     "scripts": {
-        "serve": "parcel index.html",
-        "build": "parcel build index.html",
+        "serve": "npm run copy-static-assets && parcel index.html",
+        "build": "npm run copy-static-assets && parcel build index.html",
         "lint": "eslint 'src/**/*.{js,ts,tsx}'",
-        "lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix"
+        "lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
+        "copy-static-assets": "mkdir -p dist && cp -R assets/ dist/"
     },
     "license": "Unlicense"
 }
