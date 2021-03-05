@@ -6,7 +6,7 @@ This is the webified version of the stretching routine presented in the [Physiol
 
 ## Why
 
-In an attempt to break my sedentary lifestyle, I challenged myself for 30 days stretching routine. Halfway through, while I could not do it entirely unaided, I needed less instruction. Knowing the order of exercises and when to switch from one was enough.
+In an attempt to break my sedentary lifestyle, I challenged myself for 30 days stretching routine. Halfway through, while I could not do it entirely unaided, I needed less instruction. Knowing the order of exercises and when to switch from one to another was enough.
 
 Besides this, I got bored of hearing the same jokes from the teacher for the 17th time.
 
@@ -14,25 +14,30 @@ Besides this, I got bored of hearing the same jokes from the teacher for the 17t
 
 This app takes you through the stretching routine. It's not meant to instruct you how to do the exercises, so there are no details, only a small clip to remind you of what you already know.
 
-When the exercise begins and ends, there is a sound signal played. There's no option to turn this off, just [mute the tab](https://www.howtogeek.com/231959/how-to-mute-individual-browser-tabs-in-chrome-safari-and-firefox/) if you don't need it.
+When the exercise begins and ends, there is a sound signal. The options are not that creative, but hey, ¯\_(ツ)_/¯.
 
-Before starting, you can set the duration of exercises and pauses between. The defaults are matching the pace of the course.
+Before starting, you can set the duration of exercises and pauses between. The defaults are matching the pace of the course. The more, the better.
+
+JSYK:
+- You should keep the browser's tab active during the stretch 
+- If you are using it from a mobile browser, the sound might not play
+- There's no option to turn the sound off, just [mute the tab](https://www.howtogeek.com/231959/how-to-mute-individual-browser-tabs-in-chrome-safari-and-firefox/) if you don't need it.
 
 ## Misc
 
 This is a weekend project; there is no changelog or versioning. The repo is public because why not, so treat it like that.
 
-### Technicalities
+ᕙ(⇀‸↼‶)ᕗ
 
-_You should keep the browser tab active during the stretch._
+### Technicalities
 
 [Timeouts in inactive tabs](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#Timeouts_in_inactive_tabs_throttled_to_%E2%89%A5_1000ms) are handled differently than on active tabs. The [worker-timers](https://github.com/chrisguttandin/worker-timers) package is a replacement for the `setTimeout` (that is used here in the most naive way) and can help with some strange edge cases.
 
-_If you are using it from a mobile browser, the sound might not play._
-
 This could be solved by using [howler.js](https://github.com/goldfire/howler.js#mobilechrome-playback), as it's capable of unlocking the audio playback automatically. 
 
-I'm okay with these limitations, but if you fork the project and fix these, let me know.
+I'm okay with these limitations, but if you find them annoying, feel free to fork the project or make a pull request.
+
+(っ◕‿◕)っ 
 
 ---
 
@@ -40,7 +45,7 @@ I'm okay with these limitations, but if you fork the project and fix these, let 
 
 Assuming you have `node` and `npm` already installed, run `npm install` to install the dependencies.
 
-To quickly get the local version up and running, run `npm run serve`. This command will start a server, typically at `http://localhost:1234`. A different port is assigned, if the default is already used.
+To quickly get the local version up and running, run `npm run serve`. This command will start a server, typically at `http://localhost:1234`.
 
 You can lint the JavaScript files with ESLint: `npm run lint`, and fix what's possible automatically with `npm run lint:fix`.
 
